@@ -16,7 +16,7 @@ namespace Assets.Scripts
         bool carried;
         GameObject carrier;
 
-        float defaultY;
+        Vector3 defaultY;
 
         public int Type;
 
@@ -26,63 +26,19 @@ namespace Assets.Scripts
         {
             player1 = GameObject.FindWithTag("Player1");
             player2 = GameObject.FindWithTag("Player2");
-            defaultY = this.transform.position.y;
+            defaultY = this.transform.position;
         }
 
         public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.LeftControl))
-            {
-                if (carried && (Carrier().PlayerNumber == Properties.FIRST_PLAYER))
-                {
-                    Carrier().hasSacrifice = false;
-                    resetY();
-                }
-                else
-                {
-                    if ((player1.transform.position - this.gameObject.transform.position).sqrMagnitude < 1.5)
-                    {
-                        if (!Player(Properties.FIRST_PLAYER).hasSacrifice)
-                        {
-                            Player(Properties.FIRST_PLAYER).setSacrifice(this.gameObject);
-                            carrier = player1;
-                            carried = true;
-                        }
-                    }
-                }
-            }
-
-            if (Input.GetKeyDown("[.]"))
-            {
-                if (carried && (Carrier().PlayerNumber == Properties.SECOND_PLAYER))
-                {
-                    Carrier().hasSacrifice = false;
-                    resetY();
-                }
-                else
-                {
-                    if ((player2.transform.position - this.gameObject.transform.position).sqrMagnitude < 1.5)
-                    {
-                        if (!Player(Properties.SECOND_PLAYER).hasSacrifice)
-                        {
-                            Player(Properties.SECOND_PLAYER).setSacrifice(this.gameObject);
-                            carrier = player2;
-                            carried = true;
-                        }
-                    }
-                }
-            }
-
             if (carried)
             {
-                Vector3 nposition = carrier.transform.position + carrier.transform.forward * 1.25f;
-                this.gameObject.transform.position = nposition;
+                carry(this.gameObject);
             }
-        }
-
-        public void resetY()
-        {
-            this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, defaultY, this.gameObject.transform.position.z);
+            else
+            {
+                pickUp();
+            }
         }
 
         public Player Player(int number)
@@ -96,6 +52,51 @@ namespace Assets.Scripts
         public Player Carrier()
         {
                 return carrier.GetComponent<Player>();
+        }
+
+        void carry(GameObject o)
+        {
+            Vector3 nposition = carrier.transform.position + carrier.transform.forward * 1.25f;
+            o.transform.position = nposition;
+            if ((carrier == player1) && (Input.GetKeyDown(KeyCode.LeftControl)))
+            {
+                carried = false;
+                player1.GetComponent<Player>().hasSacrifice = false;
+                o.transform.position = new Vector3(nposition.x, defaultY.y, nposition.z);
+            }
+            if ((carrier == player2) && (Input.GetKeyDown("[.]")))
+            {
+                carried = false;
+                player2.GetComponent<Player>().hasSacrifice = false;
+                o.transform.position = new Vector3(nposition.x, defaultY.y, nposition.z);
+            }
+        }
+
+        void pickUp()
+        {
+            if (((player1.transform.position - this.gameObject.transform.position).sqrMagnitude < 1.5) &&
+                (Input.GetKeyDown(KeyCode.LeftControl)))
+            {
+                if (player1.GetComponent<Player>().hasSacrifice == false)
+                {
+
+                    player1.GetComponent<Player>().hasSacrifice = true;
+                    carrier = player1;
+                    carried = true;
+                }
+            }
+
+            if (((player2.transform.position - this.gameObject.transform.position).sqrMagnitude < 1.5) &&
+                (Input.GetKeyDown("[.]")))
+            {
+                if (player2.GetComponent<Player>().hasSacrifice == false)
+                {
+                    carrier = player2;
+                    player2.GetComponent<Player>().hasSacrifice = true;
+                    carried = true;
+                }
+            }
+
         }
     }
 }
