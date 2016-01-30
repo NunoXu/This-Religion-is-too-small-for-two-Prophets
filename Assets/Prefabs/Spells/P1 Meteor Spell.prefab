@@ -108,7 +108,7 @@ GameObject:
   - 4: {fileID: 463074}
   - 114: {fileID: 11428262}
   m_Layer: 0
-  m_Name: Meteor Spell P1
+  m_Name: P1 Meteor Spell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -317,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ef8b6d9c594114b958b814c83718c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   speed: 1
   sphereTransform: {fileID: 409644}
   startTime: 0
