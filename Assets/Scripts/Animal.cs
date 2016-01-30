@@ -18,7 +18,7 @@ namespace Assets.Scripts
 
         Vector3 defaultY;
 
-        public int Type;
+        public int type;
 
         //private fields
 
@@ -52,6 +52,35 @@ namespace Assets.Scripts
         public Player Carrier()
         {
                 return carrier.GetComponent<Player>();
+        }
+
+        public float Weight()
+        {
+            if (type == Properties.HORSE)
+            {
+                return Properties.HORSE_WEIGHT;
+            }
+            else if (type == Properties.CAT)
+            {
+                return Properties.CAT_WEIGHT;
+            }
+            else if (type == Properties.GOAT)
+            {
+                return Properties.GOAT_WEIGHT;
+            }
+            else if (type == Properties.UNICORN)
+            {
+                return Properties.UNICORN_WEIGHT;
+            }
+            else if (type == Properties.CHICKEN)
+            {
+                return Properties.CHICKEN_WEIGHT;
+            }
+            else if (type == Properties.SHEEP)
+            {
+                return Properties.SHEEP_WEIGHT;
+            }
+            return 1.0f;
         }
 
         void carry(GameObject o)

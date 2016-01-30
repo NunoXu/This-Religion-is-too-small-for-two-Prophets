@@ -16,5 +16,13 @@ namespace Assets.Scripts
         public const int SECOND_PLAYER = 2;
 
         public const float ANIMAL_SPAWN_RADIUS = 7f;
+
+        public const float CAT_WEIGHT = 0.2f;
+        public const float HORSE_WEIGHT = 0.6f;
+        public const float SHEEP_WEIGHT = 0.4f;
+        public const float CHICKEN_WEIGHT = 0.1f;
+        public const float GOAT_WEIGHT = 0.35f;
+        public const float UNICORN_WEIGHT = 0.55f;
+
     }
 }
