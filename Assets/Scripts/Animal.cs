@@ -17,9 +17,6 @@ namespace Assets.Scripts
         GameObject player2;
         GameObject altar1;
         GameObject altar2;
-        GameObject ps1;
-        GameObject ps2;
-        GameObject ps3;
         GameObject gm;
 
         public Spawn spawn;
@@ -52,9 +49,6 @@ namespace Assets.Scripts
             player2 = GameObject.FindWithTag("Player2");
             altar1 = GameObject.FindWithTag("Altar1");
             altar2 = GameObject.FindWithTag("Altar2");
-            ps1 = GameObject.FindWithTag("partS1");
-            ps2 = GameObject.FindWithTag("partS2");
-            ps3 = GameObject.FindWithTag("partS3");
             gm = GameObject.FindWithTag("GameManager");
             defaultY = this.transform.position;
 
@@ -139,9 +133,9 @@ namespace Assets.Scripts
 
                 if (Vector3.Distance(this.gameObject.transform.position, altar1.transform.position) < 1.25f)
                 {
-                    ps1.GetComponent<ParticleSystem>().Play();
-                    ps2.GetComponent<ParticleSystem>().Play();
-                    ps3.GetComponent<ParticleSystem>().Play();
+
+                    GameObject ps = (GameObject)Instantiate(gm.GetComponent<GameManager>().altarSystem, altar1.transform.position, Quaternion.identity);
+                    ps.GetComponent<ParticleSystem>().Play();
                     gm.GetComponent<GameManager>().TriggerQueue(Properties.FIRST_PLAYER,Properties.SACRIFICE_KILL);
                     Destroy(this.gameObject);
                 }
@@ -156,6 +150,8 @@ namespace Assets.Scripts
                 player2.GetComponent<Player2>().hasSacrifice = false;
                 if (Vector3.Distance(this.gameObject.transform.position, altar2.transform.position) < 1.25f)
                 {
+                    GameObject ps = (GameObject)Instantiate(gm.GetComponent<GameManager>().altarSystem, altar2.transform.position, Quaternion.identity);
+                    ps.GetComponent<ParticleSystem>().Play();
                     gm.GetComponent<GameManager>().TriggerQueue(Properties.SECOND_PLAYER, Properties.SACRIFICE_KILL);
                     Destroy(this.gameObject);
                 }
