@@ -26,5 +26,8 @@ namespace Assets.Scripts
 
         public const int ANIMAL_SPAWNS = 6;
         public const int MAX_ANIMALS = 4;
+
+        public const int NATURAL_KILL = 2;
+        public const int SACRIFICE_KILL = 5;
     }
 }
