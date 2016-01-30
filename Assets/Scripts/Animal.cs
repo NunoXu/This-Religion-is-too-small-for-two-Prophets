@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Assets.Scripts.Movement;
+using Assets.Scripts.Movement.DynamicMovement;
+using Assets.Scripts.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -16,6 +19,7 @@ namespace Assets.Scripts
         GameObject altar2;
         GameObject gm;
 
+        public Spawn spawn;
         bool carried;
         GameObject carrier;
 
@@ -23,7 +27,21 @@ namespace Assets.Scripts
 
         public int type;
 
-        //private fields
+        //DynamicCharacter
+        public GameObject GameObject { get; protected set; }
+        public KinematicData KinematicData { get; protected set; }
+        private DynamicMovement movement;
+        public DynamicMovement Movement
+        {
+            get { return this.movement; }
+            set
+            {
+                this.movement = value;
+                if (this.movement != null) this.movement.Character = this.KinematicData;
+            }
+        }
+        public float Drag { get; set; }
+        public float MaxSpeed { get; set; }
 
         public void Start()
         {
@@ -33,6 +51,18 @@ namespace Assets.Scripts
             altar2 = GameObject.FindWithTag("Altar2");
             gm = GameObject.FindWithTag("GameManager");
             defaultY = this.transform.position;
+
+            this.KinematicData = new KinematicData(new StaticData(gameObject.transform.position));
+            this.GameObject = gameObject;
+            this.Drag = 1;
+            this.MaxSpeed = 20.0f;
+
+            this.Movement = new DynamicWander(1.5f, 0.6f, 1.0f- this.Weight())
+            {
+                Character = this.KinematicData,
+                Target = new KinematicData(new StaticData(this.spawn.gameObject.transform.position))
+            };
+
         }
 
         public void Update()
@@ -43,6 +73,17 @@ namespace Assets.Scripts
             }
             else
             {
+                if (this.Movement != null)
+                {
+                    MovementOutput steering = this.Movement.GetMovement();
+
+                    this.KinematicData.Integrate(steering, this.Drag, Time.deltaTime);
+                    this.KinematicData.SetOrientationFromVelocity();
+                    this.KinematicData.TrimMaxSpeed(this.MaxSpeed);
+
+                    this.GameObject.transform.position = this.KinematicData.position;
+                    this.GameObject.transform.rotation = Quaternion.AngleAxis(this.KinematicData.orientation * MathConstants.MATH_180_PI, Vector3.up);
+                }
                 pickUp();
             }
         }
