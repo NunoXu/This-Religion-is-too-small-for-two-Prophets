@@ -8,5 +8,7 @@ namespace Assets.Scripts.Spells
 {
     public class Spell : MonoBehaviour
     {
+
+        public GameManager gameManager;
     }
 }

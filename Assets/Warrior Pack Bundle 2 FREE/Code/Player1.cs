@@ -5,18 +5,13 @@ namespace Assets.Scripts
 {
     public class Player1 : Player
     {
-
+        
         void Update()
         {
             //Get input from controls
             float z = Input.GetAxisRaw("Horizontal");
             float x = -(Input.GetAxisRaw("Vertical"));
             inputVec = new Vector3(x, 0, z);
-
-            if (hasSacrifice)
-            {
-                inputVec *= CurrentAnimal().Weight();
-            }
 
             //Apply inputs to animator
             animator.SetFloat("Input X", z);
@@ -40,7 +35,6 @@ namespace Assets.Scripts
                 animator.SetTrigger("Attack1Trigger");
                 StartCoroutine(COStunPause(1.2f));
             }
-
             UpdateMovement();  //update character position and facing
         }
 
@@ -69,6 +63,14 @@ namespace Assets.Scripts
 
             // Target direction relative to the camera
             targetDirection = h * right + v * forward;
+            if (hasSacrifice)
+            {
+                animator.speed = 1 - CurrentAnimal().Weight() ;
+            }
+            else
+            {
+                animator.speed = 1;
+            }
         }
 
         //face character along input direction
@@ -79,17 +81,17 @@ namespace Assets.Scripts
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(targetDirection), Time.deltaTime * rotationSpeed);
             }
         }
+        
+                void UpdateMovement()
+                {
+                    //get movement input from controls
+                    Vector3 motion = inputVec;
+                    //reduce input for diagonal movement
+                    motion *= (Mathf.Abs(inputVec.x) == 1 && Mathf.Abs(inputVec.z) == 1) ? .7f : 1;
 
-        void UpdateMovement()
-        {
-            //get movement input from controls
-            Vector3 motion = inputVec;
-
-            //reduce input for diagonal movement
-            motion *= (Mathf.Abs(inputVec.x) == 1 && Mathf.Abs(inputVec.z) == 1) ? .7f : 1;
-
-            RotateTowardMovementDirection();
-            GetCameraRelativeMovement();
-        }
+                    RotateTowardMovementDirection();
+                    GetCameraRelativeMovement();
+                }
+        
     }
 }
