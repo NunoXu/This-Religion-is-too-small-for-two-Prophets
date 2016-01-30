@@ -35,29 +35,40 @@ public class pickUpable : MonoBehaviour {
         o.transform.position = nposition;
         if ((carrier == player1) && (Input.GetKeyDown(KeyCode.LeftControl))) {
             carrying = false;
+            player1.GetComponent<WarriorAnimationDemoFREE>().carrying = false;
             o.transform.position = new Vector3(nposition.x, tposition.y, nposition.z);
         }
-        if ((carrier == player2) && (Input.GetKeyDown("[1]")))
+        if ((carrier == player2) && (Input.GetKeyDown("[.]")))
         {
             carrying = false;
+            player2.GetComponent<WarriorAnimationDemoFREE2>().carrying = false;
             o.transform.position = new Vector3(nposition.x, tposition.y, nposition.z);
         }
     }
 
     void pickUp()
     {
-        if (((player1.transform.position - carriedObject.transform.position).sqrMagnitude < 0.5) &&
+        if (((player1.transform.position - carriedObject.transform.position).sqrMagnitude < 1.5) &&
             (Input.GetKeyDown(KeyCode.LeftControl)))
         {
-            carrier = player1;
-            carrying = true;
+            if (player1.GetComponent<WarriorAnimationDemoFREE>().carrying == false)
+            {
+
+                player1.GetComponent<WarriorAnimationDemoFREE>().carrying = true;
+                carrier = player1;
+                carrying = true;
+            }
         }
 
-        if (((player2.transform.position - carriedObject.transform.position).sqrMagnitude < 0.5) &&
-            (Input.GetKeyDown("[1]")))
+        if (((player2.transform.position - carriedObject.transform.position).sqrMagnitude < 1.5) &&
+            (Input.GetKeyDown("[.]")))
         {
-            carrier = player2;
-            carrying = true;
+            if (player2.GetComponent<WarriorAnimationDemoFREE2>().carrying == false)
+            {
+                carrier = player2;
+                player2.GetComponent<WarriorAnimationDemoFREE2>().carrying = true;
+                carrying = true;
+            }
         }
 
     }
