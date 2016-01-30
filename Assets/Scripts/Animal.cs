@@ -41,14 +41,6 @@ namespace Assets.Scripts
             }
         }
 
-        public Player Player(int number)
-        {
-            if(number == Properties.FIRST_PLAYER)
-            return player1.GetComponent<Player>();
-            else
-                return player2.GetComponent<Player>();
-        }
-
         public Player Carrier()
         {
                 return carrier.GetComponent<Player>();
@@ -90,14 +82,16 @@ namespace Assets.Scripts
             if ((carrier == player1) && (Input.GetKeyDown(KeyCode.LeftControl)))
             {
                 carried = false;
-                player1.GetComponent<Player>().hasSacrifice = false;
+                player1.GetComponent<Player1>().hasSacrifice = false;
                 o.transform.position = new Vector3(nposition.x, defaultY.y, nposition.z);
+                player1.GetComponent<Player1>().hasSacrifice = false;
             }
             if ((carrier == player2) && (Input.GetKeyDown("[.]")))
             {
                 carried = false;
-                player2.GetComponent<Player>().hasSacrifice = false;
+                player2.GetComponent<Player2>().hasSacrifice = false;
                 o.transform.position = new Vector3(nposition.x, defaultY.y, nposition.z);
+                player2.GetComponent<Player2>().hasSacrifice = false;
             }
         }
 
@@ -106,23 +100,23 @@ namespace Assets.Scripts
             if (((player1.transform.position - this.gameObject.transform.position).sqrMagnitude < 1.5) &&
                 (Input.GetKeyDown(KeyCode.LeftControl)))
             {
-                if (player1.GetComponent<Player>().hasSacrifice == false)
+                if (player1.GetComponent<Player1>().hasSacrifice == false)
                 {
-
-                    player1.GetComponent<Player>().hasSacrifice = true;
+                    
                     carrier = player1;
                     carried = true;
+                    player1.GetComponent<Player1>().setSacrifice(this.gameObject);
                 }
             }
 
             if (((player2.transform.position - this.gameObject.transform.position).sqrMagnitude < 1.5) &&
                 (Input.GetKeyDown("[.]")))
             {
-                if (player2.GetComponent<Player>().hasSacrifice == false)
+                if (player2.GetComponent<Player2>().hasSacrifice == false)
                 {
                     carrier = player2;
-                    player2.GetComponent<Player>().hasSacrifice = true;
                     carried = true;
+                    player2.GetComponent<Player2>().setSacrifice(this.gameObject);
                 }
             }
 
