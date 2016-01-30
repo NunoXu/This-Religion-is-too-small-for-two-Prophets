@@ -12,6 +12,9 @@ namespace Assets.Scripts
         //public fields to be set in Unity Editor
         GameObject player1;
         GameObject player2;
+        GameObject altar1;
+        GameObject altar2;
+        GameObject gm;
 
         bool carried;
         GameObject carrier;
@@ -26,6 +29,9 @@ namespace Assets.Scripts
         {
             player1 = GameObject.FindWithTag("Player1");
             player2 = GameObject.FindWithTag("Player2");
+            altar1 = GameObject.FindWithTag("Altar1");
+            altar2 = GameObject.FindWithTag("Altar2");
+            gm = GameObject.FindWithTag("GameManager");
             defaultY = this.transform.position;
         }
 
@@ -83,21 +89,35 @@ namespace Assets.Scripts
             {
                 carried = false;
                 player1.GetComponent<Player1>().hasSacrifice = false;
-                o.transform.position = new Vector3(nposition.x, defaultY.y, nposition.z);
-                player1.GetComponent<Player1>().hasSacrifice = false;
+
+                if (Vector3.Distance(this.gameObject.transform.position, altar1.transform.position) < 1.25f)
+                {
+                    //gm.GetComponent<GameManager>().
+                    Destroy(this.gameObject);
+                }
+                else
+                {
+                    o.transform.position = new Vector3(nposition.x, defaultY.y, nposition.z);
+                }
             }
             if ((carrier == player2) && (Input.GetKeyDown("[.]")))
             {
                 carried = false;
                 player2.GetComponent<Player2>().hasSacrifice = false;
-                o.transform.position = new Vector3(nposition.x, defaultY.y, nposition.z);
-                player2.GetComponent<Player2>().hasSacrifice = false;
+                if (Vector3.Distance(this.gameObject.transform.position, altar2.transform.position) < 1.25f)
+                {
+                    Destroy(this.gameObject);
+                }
+                else
+                {
+                    o.transform.position = new Vector3(nposition.x, defaultY.y, nposition.z);
+                }
             }
         }
 
         void pickUp()
         {
-            if (((player1.transform.position - this.gameObject.transform.position).sqrMagnitude < 1.5) &&
+            if ((Vector3.Distance(player1.transform.position,this.gameObject.transform.position) < 1.5) &&
                 (Input.GetKeyDown(KeyCode.LeftControl)))
             {
                 if (player1.GetComponent<Player1>().hasSacrifice == false)
@@ -109,7 +129,7 @@ namespace Assets.Scripts
                 }
             }
 
-            if (((player2.transform.position - this.gameObject.transform.position).sqrMagnitude < 1.5) &&
+            if ((Vector3.Distance(player2.transform.position,this.gameObject.transform.position) < 1.5) &&
                 (Input.GetKeyDown("[.]")))
             {
                 if (player2.GetComponent<Player2>().hasSacrifice == false)
@@ -121,5 +141,7 @@ namespace Assets.Scripts
             }
 
         }
+
+
     }
 }
