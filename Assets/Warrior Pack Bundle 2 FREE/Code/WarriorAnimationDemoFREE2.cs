@@ -6,7 +6,6 @@ public class WarriorAnimationDemoFREE2 : MonoBehaviour
 	public Animator animator;
 
 	float rotationSpeed = 30;
-    public bool carrying = false;
 
 	Vector3 inputVec;
 	Vector3 targetDirection;

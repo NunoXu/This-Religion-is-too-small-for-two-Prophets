@@ -69,7 +69,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 416608}
   - 95: {fileID: 9540962}
-  - 114: {fileID: 11468950}
+  - 114: {fileID: 11493464}
   m_Layer: 0
   m_Name: Horse
   m_TagString: Untagged
@@ -1307,7 +1307,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11468950
+--- !u!114 &11493464
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1315,9 +1315,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 108588}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac789b1e9b6723d46876338878aea2d3, type: 3}
+  m_Script: {fileID: 11500000, guid: afe7e0d2e64a6ae4cb498ddde2ab4713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
 --- !u!137 &13757014
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

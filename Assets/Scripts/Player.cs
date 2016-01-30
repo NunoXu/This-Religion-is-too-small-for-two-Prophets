@@ -10,13 +10,11 @@ namespace Assets.Scripts
     public class Player : MonoBehaviour
     {
         //public fields to be set in Unity Editor
-        public GameManager.GameManager GameManager;
-        public GameObject GameCharacter;
 
         //private fields
         public int PlayerNumber { get; private set; }
-        private List<GameObject> PlayerSacrifices;
-        private GameObject CurrentSacrifice;
+        public GameObject CurrentSacrifice;
+        public bool hasSacrifice;
 
         public void Start()
         {
@@ -36,6 +34,17 @@ namespace Assets.Scripts
            
         }
 
-      
+
+        public Animal CurrentAnimal()
+        {
+            return CurrentSacrifice.GetComponent<Animal>();
+        }
+        
+        public void setSacrifice(GameObject animal)
+        {
+            this.hasSacrifice = true;
+            this.CurrentSacrifice = animal;
+        }
+    
     }
 }

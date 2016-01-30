@@ -1583,22 +1583,22 @@ MonoBehaviour:
   m_SceneId:
     m_Value: 0
   m_AssetId:
-    i0: 0
-    i1: 0
-    i2: 0
-    i3: 0
-    i4: 0
-    i5: 0
-    i6: 0
-    i7: 0
-    i8: 0
-    i9: 0
-    i10: 0
-    i11: 0
-    i12: 0
-    i13: 0
-    i14: 0
-    i15: 0
+    i0: 131
+    i1: 96
+    i2: 219
+    i3: 172
+    i4: 24
+    i5: 121
+    i6: 158
+    i7: 228
+    i8: 58
+    i9: 101
+    i10: 194
+    i11: 205
+    i12: 37
+    i13: 252
+    i14: 105
+    i15: 103
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
 --- !u!114 &11480622
@@ -1612,7 +1612,7 @@ MonoBehaviour:
   m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 0
+  m_TransformSyncMode: 1
   m_SendInterval: 0.1
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
@@ -1633,6 +1633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9590292}
+  carrying: 0
   warrior: 0
 --- !u!137 &13726158
 SkinnedMeshRenderer:

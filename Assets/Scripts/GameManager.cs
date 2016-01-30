@@ -3,14 +3,17 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.GameManager
+namespace Assets.Scripts
 {
     public class GameManager : MonoBehaviour
     {
         //public fields, seen by Unity in Editor
-        public GameObject PlayerOne;
-        public GameObject PlayerTwo;
-        
+        public GameObject PlayerOneObject;
+        public GameObject PlayerTwoObject;
+
+        public Player PlayerOne;
+        public Player PlayerTwo;
+
         public GameObject SpawnOne;
         public GameObject SpawnTwo;
 
@@ -45,6 +48,9 @@ namespace Assets.Scripts.GameManager
                 GenerateAnimal(pos);
             }
 
+            this.PlayerOne = PlayerOneObject.GetComponent<Player>();
+            this.PlayerTwo = PlayerTwoObject.GetComponent<Player>();
+
             //change to different animals later ; maybe split into two different lists?
             // this.Sacrifices = GameObject.FindGameObjectsWithTag("Sacrifice").ToList();
 
@@ -52,15 +58,15 @@ namespace Assets.Scripts.GameManager
 
         public void Update()
         {
-           
 
-                //Get players movements, update the world
 
-                //Wander sacrifices
+            //Get players movements, update the world
 
-                //Respawn more if needed
+            //Wander sacrifices
 
-            
+            //Respawn more if needed
+
+
         }
 
         //refer to IAJ-Lab9 GameManager for additional functions
@@ -113,7 +119,7 @@ namespace Assets.Scripts.GameManager
 
         public void DropAnimal(Player player)
         {
-
+            
         }
 
         public void KillAnimal(Player player, int keyModifier)

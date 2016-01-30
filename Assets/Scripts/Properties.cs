@@ -1,6 +1,6 @@
 ﻿using System.CodeDom;
 
-namespace Assets.Scripts.GameManager
+namespace Assets.Scripts
 {
     public static class Properties
     {

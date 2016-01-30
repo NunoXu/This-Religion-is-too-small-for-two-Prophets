@@ -600,7 +600,7 @@ GameObject:
   - 4: {fileID: 415948}
   - 111: {fileID: 11193410}
   - 95: {fileID: 9557732}
-  - 114: {fileID: 11452190}
+  - 114: {fileID: 11476832}
   m_Layer: 0
   m_Name: Kitten
   m_TagString: Player
@@ -1810,7 +1810,7 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 1
---- !u!114 &11452190
+--- !u!114 &11476832
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1818,9 +1818,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 160868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac789b1e9b6723d46876338878aea2d3, type: 3}
+  m_Script: {fileID: 11500000, guid: afe7e0d2e64a6ae4cb498ddde2ab4713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
 --- !u!137 &13763234
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
