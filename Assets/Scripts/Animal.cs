@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Assets.Scripts.Movement;
+using Assets.Scripts.Movement.DynamicMovement;
+using Assets.Scripts.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,7 +15,11 @@ namespace Assets.Scripts
         //public fields to be set in Unity Editor
         GameObject player1;
         GameObject player2;
+        GameObject altar1;
+        GameObject altar2;
+        GameObject gm;
 
+        public Spawn spawn;
         bool carried;
         GameObject carrier;
 
@@ -20,13 +27,42 @@ namespace Assets.Scripts
 
         public int type;
 
-        //private fields
+        //DynamicCharacter
+        public GameObject GameObject { get; protected set; }
+        public KinematicData KinematicData { get; protected set; }
+        private DynamicMovement movement;
+        public DynamicMovement Movement
+        {
+            get { return this.movement; }
+            set
+            {
+                this.movement = value;
+                if (this.movement != null) this.movement.Character = this.KinematicData;
+            }
+        }
+        public float Drag { get; set; }
+        public float MaxSpeed { get; set; }
 
         public void Start()
         {
             player1 = GameObject.FindWithTag("Player1");
             player2 = GameObject.FindWithTag("Player2");
+            altar1 = GameObject.FindWithTag("Altar1");
+            altar2 = GameObject.FindWithTag("Altar2");
+            gm = GameObject.FindWithTag("GameManager");
             defaultY = this.transform.position;
+
+            this.KinematicData = new KinematicData(new StaticData(gameObject.transform.position));
+            this.GameObject = gameObject;
+            this.Drag = 1;
+            this.MaxSpeed = 20.0f;
+
+            this.Movement = new DynamicWander(1.5f, 0.6f, 1.0f- this.Weight())
+            {
+                Character = this.KinematicData,
+                Target = new KinematicData(new StaticData(this.spawn.gameObject.transform.position))
+            };
+
         }
 
         public void Update()
@@ -37,6 +73,17 @@ namespace Assets.Scripts
             }
             else
             {
+                if (this.Movement != null)
+                {
+                    MovementOutput steering = this.Movement.GetMovement();
+
+                    this.KinematicData.Integrate(steering, this.Drag, Time.deltaTime);
+                    this.KinematicData.SetOrientationFromVelocity();
+                    this.KinematicData.TrimMaxSpeed(this.MaxSpeed);
+
+                    this.GameObject.transform.position = this.KinematicData.position;
+                    this.GameObject.transform.rotation = Quaternion.AngleAxis(this.KinematicData.orientation * MathConstants.MATH_180_PI, Vector3.up);
+                }
                 pickUp();
             }
         }
@@ -83,21 +130,41 @@ namespace Assets.Scripts
             {
                 carried = false;
                 player1.GetComponent<Player1>().hasSacrifice = false;
-                o.transform.position = new Vector3(nposition.x, defaultY.y, nposition.z);
-                player1.GetComponent<Player1>().hasSacrifice = false;
+
+                if (Vector3.Distance(this.gameObject.transform.position, altar1.transform.position) < 1.25f)
+                {
+
+                    GameObject ps = (GameObject)Instantiate(gm.GetComponent<GameManager>().altarSystem, altar1.transform.position, Quaternion.identity);
+                    ps.GetComponent<ParticleSystem>().Play();
+                    gm.GetComponent<GameManager>().TriggerQueue(Properties.FIRST_PLAYER,Properties.SACRIFICE_KILL);
+                    Destroy(this.gameObject);
+                }
+                else
+                {
+                    o.transform.position = new Vector3(nposition.x, defaultY.y, nposition.z);
+                }
             }
             if ((carrier == player2) && (Input.GetKeyDown("[.]")))
             {
                 carried = false;
                 player2.GetComponent<Player2>().hasSacrifice = false;
-                o.transform.position = new Vector3(nposition.x, defaultY.y, nposition.z);
-                player2.GetComponent<Player2>().hasSacrifice = false;
+                if (Vector3.Distance(this.gameObject.transform.position, altar2.transform.position) < 1.25f)
+                {
+                    GameObject ps = (GameObject)Instantiate(gm.GetComponent<GameManager>().altarSystem, altar2.transform.position, Quaternion.identity);
+                    ps.GetComponent<ParticleSystem>().Play();
+                    gm.GetComponent<GameManager>().TriggerQueue(Properties.SECOND_PLAYER, Properties.SACRIFICE_KILL);
+                    Destroy(this.gameObject);
+                }
+                else
+                {
+                    o.transform.position = new Vector3(nposition.x, defaultY.y, nposition.z);
+                }
             }
         }
 
         void pickUp()
         {
-            if (((player1.transform.position - this.gameObject.transform.position).sqrMagnitude < 1.5) &&
+            if ((Vector3.Distance(player1.transform.position,this.gameObject.transform.position) < 1.5) &&
                 (Input.GetKeyDown(KeyCode.LeftControl)))
             {
                 if (player1.GetComponent<Player1>().hasSacrifice == false)
@@ -109,7 +176,7 @@ namespace Assets.Scripts
                 }
             }
 
-            if (((player2.transform.position - this.gameObject.transform.position).sqrMagnitude < 1.5) &&
+            if ((Vector3.Distance(player2.transform.position,this.gameObject.transform.position) < 1.5) &&
                 (Input.GetKeyDown("[.]")))
             {
                 if (player2.GetComponent<Player2>().hasSacrifice == false)
@@ -121,5 +188,7 @@ namespace Assets.Scripts
             }
 
         }
+
+
     }
 }

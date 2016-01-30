@@ -17,6 +17,7 @@ namespace Assets.Scripts
         public GameObject roosterModel;
         public GameObject sheepModel;
         public GameObject unicornModel;
+        public GameObject altarSystem;
 
         public GameObject[] SacrificesPlayerOne;
         public GameObject[] SacrificesPlayerTwo;
@@ -31,28 +32,19 @@ namespace Assets.Scripts
         private int PlayerOneSpawns;
         private int PlayerTwoSpawns;
 
+        private Queue<int> RespawnQueuePlayerOne;
+        private float currentRespawnStartTimePlayerOne;
+
+        private Queue<int> RespawnQueuePlayerTwo;
+        private float currentRespawnStartTimePlayerTwo;
+
         static readonly System.Random _random = new System.Random();
 
         public void Start()
         {
-            /*
-            for (int i = 0; i < MaxNumberOfObjectsPerPlayer; i++)
-            {
-                float angle = i * Mathf.PI * 2 / MaxNumberOfObjectsPerPlayer;
-                Vector3 pos = SpawnOne.transform.position;
-                 pos.x +=  Properties.ANIMAL_SPAWN_RADIUS * Mathf.Cos(angle);
-                 pos.z -= Properties.ANIMAL_SPAWN_RADIUS * Mathf.Sin(angle);
-                GenerateAnimal(pos);
-            }
-            for (int i = 0; i < MaxNumberOfObjectsPerPlayer; i++)
-            {
-                float angle = i * Mathf.PI * 2 / MaxNumberOfObjectsPerPlayer;
-                Vector3 pos = SpawnTwo.transform.position;
-                pos.x += Properties.ANIMAL_SPAWN_RADIUS * Mathf.Cos(angle);
-                pos.z += Properties.ANIMAL_SPAWN_RADIUS * Mathf.Sin(angle);
-                GenerateAnimal(pos);
-            }
-            */
+            this.RespawnQueuePlayerOne = new Queue<int>();
+            this.RespawnQueuePlayerTwo = new Queue<int>();
+
             this.PlayerOne = PlayerOneObject.GetComponent<Player>();
             this.PlayerTwo = PlayerTwoObject.GetComponent<Player>();
 
@@ -63,20 +55,82 @@ namespace Assets.Scripts
                 CalculateAndGenerateAnimal(Properties.FIRST_PLAYER);
             while (this.PlayerTwoSpawns < Properties.MAX_ANIMALS)
                 CalculateAndGenerateAnimal(Properties.SECOND_PLAYER);
-    
+
         }
 
         public void Update()
         {
 
 
-            //Get players movements, update the world
+            if (RespawnQueuePlayerOne.Count > 0)
+                CheckForRespawn(Properties.FIRST_PLAYER);
+            if (RespawnQueuePlayerTwo.Count > 0)
+                CheckForRespawn(Properties.SECOND_PLAYER);
+            
 
-            //Wander sacrifices
+            //Wander sacrifices 
+            
 
-            //Respawn more if needed
 
+        }
 
+        private void CheckForRespawn(int player)
+        {
+            if (player == Properties.FIRST_PLAYER)
+            {
+
+                int currentQueueTime = RespawnQueuePlayerOne.Peek();
+
+                float timecount = Time.time - currentRespawnStartTimePlayerOne;
+                int timecountSec = (int)Mathf.Round(timecount % 60f);
+
+                if (currentQueueTime > timecountSec)
+                {
+                    RespawnQueuePlayerOne.Dequeue();
+                    CalculateAndGenerateAnimal(player);
+
+                    if (RespawnQueuePlayerOne.Count > 0)
+                    {
+                        currentRespawnStartTimePlayerOne = Time.time;
+                    }
+
+                }
+
+            } else
+            {
+                int currentQueueTime = RespawnQueuePlayerTwo.Peek();
+
+                float timecount = Time.time - currentRespawnStartTimePlayerTwo;
+                int timecountSec = (int)Mathf.Round(timecount % 60f);
+
+                if (currentQueueTime > timecountSec)
+                {
+                    RespawnQueuePlayerTwo.Dequeue();
+                    CalculateAndGenerateAnimal(player);
+
+                    if (RespawnQueuePlayerTwo.Count > 0)
+                    {
+                        currentRespawnStartTimePlayerTwo = Time.time;
+                    }
+
+                }
+            }
+        }
+
+        public void TriggerQueue(int player, int time)
+        {
+            if (player == Properties.FIRST_PLAYER)
+            {
+                if (RespawnQueuePlayerOne.Count == 0)
+                    this.currentRespawnStartTimePlayerOne = Time.time;
+                RespawnQueuePlayerOne.Enqueue(time);
+            }
+            else
+            {
+                if (RespawnQueuePlayerTwo.Count == 0)
+                    this.currentRespawnStartTimePlayerTwo = Time.time;
+                RespawnQueuePlayerTwo.Enqueue(time);
+            }
         }
 
         //refer to IAJ-Lab9 GameManager for additional functions
@@ -103,6 +157,7 @@ namespace Assets.Scripts
                 else
                 {
                     spawn.CurrentAnimalObject = (GameObject)GenerateRandomAnimal(CalculatePoint(spawn.transform.position));
+                    spawn.CurrentAnimal().spawn = spawn;
                     spawn.hasAnimal = true;
                     if (player == Properties.FIRST_PLAYER)
                         PlayerOneSpawns++;
@@ -172,5 +227,6 @@ namespace Assets.Scripts
         {
 
         }
+
     }
 }
