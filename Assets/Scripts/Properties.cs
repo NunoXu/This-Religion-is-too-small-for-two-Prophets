@@ -15,7 +15,7 @@ namespace Assets.Scripts
         public const int FIRST_PLAYER = 1;
         public const int SECOND_PLAYER = 2;
 
-        public const float ANIMAL_SPAWN_RADIUS = 7f;
+        public const float ANIMAL_SPAWN_RADIUS = 1.5f;
 
         public const float CAT_WEIGHT = 0.2f;
         public const float HORSE_WEIGHT = 0.6f;
@@ -24,5 +24,7 @@ namespace Assets.Scripts
         public const float GOAT_WEIGHT = 0.35f;
         public const float UNICORN_WEIGHT = 0.55f;
 
+        public const int ANIMAL_SPAWNS = 6;
+        public const int MAX_ANIMALS = 4;
     }
 }
