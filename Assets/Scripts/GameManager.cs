@@ -11,12 +11,6 @@ namespace Assets.Scripts
         public GameObject PlayerOneObject;
         public GameObject PlayerTwoObject;
 
-        public Player PlayerOne;
-        public Player PlayerTwo;
-
-        public GameObject SpawnOne;
-        public GameObject SpawnTwo;
-
         public GameObject horseModel;
         public GameObject kittenModel;
         public GameObject goatModel;
@@ -24,13 +18,24 @@ namespace Assets.Scripts
         public GameObject sheepModel;
         public GameObject unicornModel;
 
+        public GameObject[] SacrificesPlayerOne;
+        public GameObject[] SacrificesPlayerTwo;
+
         //private fields
-        private List<GameObject> Sacrifices;
+
         private int MaxNumberOfObjectsPerPlayer = 6;
+
+        private Player PlayerOne;
+        private Player PlayerTwo;
+
+        private int PlayerOneSpawns;
+        private int PlayerTwoSpawns;
+
+        static readonly System.Random _random = new System.Random();
 
         public void Start()
         {
-            
+            /*
             for (int i = 0; i < MaxNumberOfObjectsPerPlayer; i++)
             {
                 float angle = i * Mathf.PI * 2 / MaxNumberOfObjectsPerPlayer;
@@ -47,13 +52,18 @@ namespace Assets.Scripts
                 pos.z += Properties.ANIMAL_SPAWN_RADIUS * Mathf.Sin(angle);
                 GenerateAnimal(pos);
             }
-
+            */
             this.PlayerOne = PlayerOneObject.GetComponent<Player>();
             this.PlayerTwo = PlayerTwoObject.GetComponent<Player>();
 
-            //change to different animals later ; maybe split into two different lists?
-            // this.Sacrifices = GameObject.FindGameObjectsWithTag("Sacrifice").ToList();
+            this.PlayerOneSpawns = 0;
+            this.PlayerTwoSpawns = 0;
 
+            while (this.PlayerOneSpawns < Properties.MAX_ANIMALS)
+                CalculateAndGenerateAnimal(Properties.FIRST_PLAYER);
+            while (this.PlayerTwoSpawns < Properties.MAX_ANIMALS)
+                CalculateAndGenerateAnimal(Properties.SECOND_PLAYER);
+    
         }
 
         public void Update()
@@ -76,7 +86,43 @@ namespace Assets.Scripts
             return (a.transform.position - b.transform.position).sqrMagnitude <= maximumSqrDistance;
         }
 
-        private Object GenerateAnimal(Vector3 pos)
+        private void CalculateAndGenerateAnimal(int player)
+        {
+            int spawnedNumber = (player == Properties.FIRST_PLAYER) ? this.PlayerOneSpawns : this.PlayerTwoSpawns;
+
+            if (spawnedNumber >= Properties.MAX_ANIMALS)
+                return;
+
+            while (true)
+            {
+                int spot = Random.Range(0, Properties.ANIMAL_SPAWNS);
+                GameObject spawnObj = (player == Properties.FIRST_PLAYER) ? this.SacrificesPlayerOne[spot] : this.SacrificesPlayerTwo[spot];
+                Spawn spawn = spawnObj.GetComponent<Spawn>();
+                if (spawn.hasAnimal)
+                    continue;
+                else
+                {
+                    spawn.CurrentAnimalObject = (GameObject)GenerateRandomAnimal(CalculatePoint(spawn.transform.position));
+                    spawn.hasAnimal = true;
+                    if (player == Properties.FIRST_PLAYER)
+                        PlayerOneSpawns++;
+                    else
+                        PlayerTwoSpawns++;
+                    return;
+                }
+            }
+        }
+
+        private Vector3 CalculatePoint(Vector3 _origin)
+        {
+            var angle = _random.NextDouble() * System.Math.PI * 2;
+            var radius = System.Math.Sqrt(_random.NextDouble()) * Properties.ANIMAL_SPAWN_RADIUS;
+            var x = _origin.x + radius * System.Math.Cos(angle);
+            var z = _origin.z + radius * System.Math.Sin(angle);
+            return new Vector3((float)x, _origin.y, (float)z);
+        }
+
+        private Object GenerateRandomAnimal(Vector3 pos)
         {
             int type = Random.Range(0, Properties.ANIMAL_TYPES);
             return GenerateAnimal(type, pos);
@@ -84,11 +130,11 @@ namespace Assets.Scripts
 
         private Object GenerateAnimal(int type, Vector3 pos)
         {
-            if(type == Properties.HORSE)
+            if (type == Properties.HORSE)
             {
                 return Instantiate(horseModel, pos, Quaternion.identity);
             }
-            else if(type == Properties.CAT)
+            else if (type == Properties.CAT)
             {
                 return Instantiate(kittenModel, pos, Quaternion.identity);
             }
@@ -119,7 +165,7 @@ namespace Assets.Scripts
 
         public void DropAnimal(Player player)
         {
-            
+
         }
 
         public void KillAnimal(Player player, int keyModifier)
