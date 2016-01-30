@@ -9,6 +9,7 @@ namespace Assets.Scripts.Spells
     public class ThunderSpell : Spell
     {
 
-        public Collider collider;
+        public Collider targetCollider;
+        public ParticleSystem particles;
     }
 }

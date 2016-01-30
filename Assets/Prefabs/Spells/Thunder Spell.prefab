@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &130886
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,6 +25,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 426636}
+  - 114: {fileID: 11491304}
   m_Layer: 0
   m_Name: Thunder Spell
   m_TagString: Untagged
@@ -57,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130886}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.72, y: 0, z: 0.1}
   m_LocalScale: {x: 3.3180902, y: 1, z: 3.3180938}
   m_Children:
   - {fileID: 462614}
@@ -121,6 +122,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146044}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &11491304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fde2d3ee02c77940b47b3da60d6a03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetCollider: {fileID: 13656516}
+  particles: {fileID: 19881744}
 --- !u!136 &13656516
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -141,7 +155,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118818}
   serializedVersion: 2
-  lengthInSec: 1.2
+  lengthInSec: 2
   startDelay:
     scalar: 0
     maxCurve:
@@ -188,7 +202,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 2
+      scalar: 0.6
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -199,18 +213,18 @@ ParticleSystem:
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minCurve:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 0.5
+          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minMaxState: 3
     startSpeed:
       scalar: -0.01
@@ -469,7 +483,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     type: 4
-    radius: 0.49551928
+    radius: 0.3050582
     angle: 0
     length: 5
     boxX: 10
@@ -524,19 +538,19 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    cnt0: 2
-    cnt1: 2
+    cnt0: 1
+    cnt1: 3
     cnt2: 2
     cnt3: 30
-    cntmax0: 2
-    cntmax1: 2
+    cntmax0: 1
+    cntmax1: 3
     cntmax2: 2
     cntmax3: 30
     time0: 0
     time1: 0.1
     time2: 0.15
     time3: 0
-    m_BurstCount: 3
+    m_BurstCount: 1
   SizeModule:
     enabled: 0
     curve:
@@ -802,7 +816,7 @@ ParticleSystem:
       minMaxState: 0
     tilesX: 1
     tilesY: 4
-    animationType: 1
+    animationType: 0
     rowIndex: 0
     cycles: 1
     randomRow: 1
@@ -1617,7 +1631,7 @@ ParticleSystemRenderer:
   m_RenderMode: 1
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MaxParticleSize: 0.2
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 3
