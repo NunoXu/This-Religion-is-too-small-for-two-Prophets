@@ -46,14 +46,14 @@ public class pickUpable : MonoBehaviour {
 
     void pickUp()
     {
-        if (((player1.transform.position - carriedObject.transform.position).sqrMagnitude < 3) &&
+        if (((player1.transform.position - carriedObject.transform.position).sqrMagnitude < 0.5) &&
             (Input.GetKeyDown(KeyCode.LeftControl)))
         {
             carrier = player1;
             carrying = true;
         }
 
-        if (((player2.transform.position - carriedObject.transform.position).sqrMagnitude < 3) &&
+        if (((player2.transform.position - carriedObject.transform.position).sqrMagnitude < 0.5) &&
             (Input.GetKeyDown("[1]")))
         {
             carrier = player2;
