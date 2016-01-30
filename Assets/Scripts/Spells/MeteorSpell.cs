@@ -37,6 +37,11 @@ namespace Assets.Scripts.Spells
 
             float distance = Vector3.Distance(oldPosition, sphereTransform.position);
             sphereTransform.Rotate(Vector3.forward, distance*30f*direction);
+
+            if (Vector3.Distance(sphereTransform.position, endPosition.position + new Vector3(0.0f, sphereTransform.transform.position.y, 0.0f)) < 0.5f)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }
