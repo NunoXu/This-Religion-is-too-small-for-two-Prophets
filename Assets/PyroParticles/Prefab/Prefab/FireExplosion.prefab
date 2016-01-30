@@ -170,7 +170,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -192,7 +192,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!108 &10875142
 Light:
   m_ObjectHideFlags: 1
@@ -258,7 +258,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Seed: 0
   IntensityModifier: 2
-  IntensityMaxRange: {x: 0, y: 8}
+  IntensityMaxRange:
+    Minimum: 0
+    Maximum: 8
 --- !u!198 &19834194
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3235,7 +3237,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131164}
