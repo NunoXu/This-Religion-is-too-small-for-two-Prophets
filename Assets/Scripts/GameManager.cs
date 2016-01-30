@@ -116,7 +116,7 @@ namespace Assets.Scripts
             }
         }
 
-        private void TriggerQueue(int player, int time)
+        public void TriggerQueue(int player, int time)
         {
             if (player == Properties.FIRST_PLAYER)
             {
