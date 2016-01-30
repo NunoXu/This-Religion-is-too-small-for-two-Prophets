@@ -10,11 +10,9 @@ GameObject:
   - 4: {fileID: 400000}
   - 95: {fileID: 9590292}
   - 114: {fileID: 11484642}
-  - 114: {fileID: 11463012}
-  - 114: {fileID: 11417088}
   m_Layer: 0
   m_Name: Mage Warrior
-  m_TagString: Player
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -838,8 +836,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.7913463, y: 0.43164062, z: 1.1088462}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 426158}
   - {fileID: 426160}
@@ -1569,58 +1567,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11417088
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
---- !u!114 &11463012
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 186
-    i1: 208
-    i2: 1
-    i3: 142
-    i4: 185
-    i5: 37
-    i6: 110
-    i7: 100
-    i8: 9
-    i9: 21
-    i10: 89
-    i11: 129
-    i12: 221
-    i13: 90
-    i14: 249
-    i15: 162
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &11484642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1633,6 +1579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9590292}
+  carrying: 0
   warrior: 5
 --- !u!137 &13726158
 SkinnedMeshRenderer:
