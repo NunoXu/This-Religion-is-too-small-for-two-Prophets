@@ -65,8 +65,7 @@ namespace Assets.Scripts
             targetDirection = h * right + v * forward;
             if (hasSacrifice)
             {
-                Debug.Log(CurrentAnimal().Weight());
-                animator.speed = CurrentAnimal().Weight() * 2;
+                animator.speed = 1 - CurrentAnimal().Weight() ;
             }
             else
             {
