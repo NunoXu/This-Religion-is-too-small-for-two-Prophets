@@ -26,7 +26,7 @@ namespace Assets.Scripts
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
-                //stuff
+                print("animal reporting");
             }
 
            
