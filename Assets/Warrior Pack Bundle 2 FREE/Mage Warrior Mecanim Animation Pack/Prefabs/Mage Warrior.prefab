@@ -34,6 +34,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &111726
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 419200}
+  - 114: {fileID: 11444646}
+  m_Layer: 0
+  m_Name: ThunderInvoker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &123144
 GameObject:
   m_ObjectHideFlags: 1
@@ -956,6 +972,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 469386}
   m_RootOrder: 1
+--- !u!4 &419200
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111726}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 469386}
+  m_RootOrder: 2
 --- !u!4 &426158
 Transform:
   m_ObjectHideFlags: 1
@@ -1698,6 +1726,7 @@ Transform:
   m_Children:
   - {fileID: 479574}
   - {fileID: 415082}
+  - {fileID: 419200}
   m_Father: {fileID: 400000}
   m_RootOrder: 3
 --- !u!4 &476602
@@ -1790,6 +1819,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpellPrefab: {fileID: 130650, guid: 9ddc0c88df3f68c44a530f9144e4deed, type: 2}
   SpawnPoint: {fileID: 0}
+--- !u!114 &11444646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b87d092c9bf5f34a919461e6b49ea05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpellPrefab: {fileID: 130886, guid: 6ec9eb72960641a40adc93ac2106dfde, type: 2}
+  Spawnpoints: []
+  Altar: {fileID: 0}
+  Thunders: 5
 --- !u!114 &11484642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1805,6 +1849,7 @@ MonoBehaviour:
   invokers:
   - {fileID: 11418122}
   - {fileID: 11405846}
+  - {fileID: 11444646}
   rotationSpeed: 30
   inputVec: {x: 0, y: 0, z: 0}
   targetDirection: {x: 0, y: 0, z: 0}

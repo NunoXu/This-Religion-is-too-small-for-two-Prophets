@@ -9,6 +9,7 @@ namespace Assets.Scripts.Spells
     class HeatWaveSpell: Spell
     {
         public ParticleSystem ps;
+        public Collider targetCollider;
         public float startTime;
         private float fireTime = 15f;
 
@@ -18,6 +19,7 @@ namespace Assets.Scripts.Spells
         {
             startTime = Time.time;
             ps.Play();
+            targetCollider.enabled = true;
             done = false;
             gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         }
@@ -26,6 +28,7 @@ namespace Assets.Scripts.Spells
         {
             if (!done && Time.time - startTime >= fireTime) {
                 ps.Stop();
+                targetCollider.enabled = false;
                 done = true;
             }
         }
