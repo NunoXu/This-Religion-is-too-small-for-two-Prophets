@@ -137,6 +137,23 @@ namespace Assets.Scripts
                     GameObject ps = (GameObject)Instantiate(gm.GetComponent<GameManager>().altarSystem, altar1.transform.position, Quaternion.identity);
                     ps.GetComponent<ParticleSystem>().Play();
                     gm.GetComponent<GameManager>().TriggerQueue(Properties.FIRST_PLAYER,Properties.SACRIFICE_KILL);
+                    if ( type == Properties.HORSE)
+                    {                    }
+                    else if (type == Properties.CAT)
+                    {
+                        GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().meteorr, new Vector3(-9.50f, 0.15f, 0.0f), Quaternion.identity);
+                        pse.GetComponent<ParticleSystem>().Play();
+                    }
+                    else if (type == Properties.CHICKEN)
+                    {  }
+                    else if (type == Properties.SHEEP)
+                    {                    }
+                    else if(type == Properties.UNICORN)
+                    {                    }
+                    else if (type == Properties.GOAT)
+                    {
+                    
+                    }
                     Destroy(this.gameObject);
                 }
                 else
@@ -153,6 +170,7 @@ namespace Assets.Scripts
                     GameObject ps = (GameObject)Instantiate(gm.GetComponent<GameManager>().altarSystem, altar2.transform.position, Quaternion.identity);
                     ps.GetComponent<ParticleSystem>().Play();
                     gm.GetComponent<GameManager>().TriggerQueue(Properties.SECOND_PLAYER, Properties.SACRIFICE_KILL);
+
                     Destroy(this.gameObject);
                 }
                 else
