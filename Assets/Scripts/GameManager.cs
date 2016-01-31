@@ -63,18 +63,10 @@ namespace Assets.Scripts
 
         public void Update()
         {
-
-
             if (RespawnQueuePlayerOne.Count > 0)
                 CheckForRespawn(Properties.FIRST_PLAYER);
             if (RespawnQueuePlayerTwo.Count > 0)
                 CheckForRespawn(Properties.SECOND_PLAYER);
-            
-
-            //Wander sacrifices 
-            
-
-
         }
 
         private void CheckForRespawn(int player)
@@ -83,11 +75,11 @@ namespace Assets.Scripts
             {
 
                 int currentQueueTime = RespawnQueuePlayerOne.Peek();
-
+                
                 float timecount = Time.time - currentRespawnStartTimePlayerOne;
-                int timecountSec = (int)Mathf.Round(timecount % 60f);
-
-                if (currentQueueTime > timecountSec)
+                int timecountSec = (int)Mathf.Floor(timecount % 60f);
+                
+                if (currentQueueTime <= timecountSec)
                 {
                     RespawnQueuePlayerOne.Dequeue();
                     CalculateAndGenerateAnimal(player);
@@ -106,7 +98,7 @@ namespace Assets.Scripts
                 float timecount = Time.time - currentRespawnStartTimePlayerTwo;
                 int timecountSec = (int)Mathf.Round(timecount % 60f);
 
-                if (currentQueueTime > timecountSec)
+                if (currentQueueTime <= timecountSec)
                 {
                     RespawnQueuePlayerTwo.Dequeue();
                     CalculateAndGenerateAnimal(player);
@@ -127,12 +119,14 @@ namespace Assets.Scripts
                 if (RespawnQueuePlayerOne.Count == 0)
                     this.currentRespawnStartTimePlayerOne = Time.time;
                 RespawnQueuePlayerOne.Enqueue(time);
+                this.PlayerOneSpawns--;
             }
             else
             {
                 if (RespawnQueuePlayerTwo.Count == 0)
                     this.currentRespawnStartTimePlayerTwo = Time.time;
                 RespawnQueuePlayerTwo.Enqueue(time);
+                this.PlayerTwoSpawns--;
             }
         }
 
