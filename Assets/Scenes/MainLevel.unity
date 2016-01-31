@@ -2479,34 +2479,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 495813309}
   m_Mesh: {fileID: 4300050, guid: d865be7c682708c4aadc2c41afec23b8, type: 3}
---- !u!1 &499897626
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 2002749487}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 499897627}
-  m_Layer: 0
-  m_Name: Missing Prefab
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &499897627
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 2002749487}
-  m_GameObject: {fileID: 499897626}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2002749488}
-  m_Father: {fileID: 1028947319}
-  m_RootOrder: 13
 --- !u!1 &508871391
 GameObject:
   m_ObjectHideFlags: 0
@@ -5352,7 +5324,7 @@ Transform:
   - {fileID: 425827896}
   - {fileID: 1466373794}
   - {fileID: 1317515981}
-  - {fileID: 499897627}
+  - {fileID: 2002749488}
   m_Father: {fileID: 1361012102}
   m_RootOrder: 0
 --- !u!1 &1029223339
@@ -8343,21 +8315,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1667292247}
   m_Mesh: {fileID: 4300060, guid: d865be7c682708c4aadc2c41afec23b8, type: 3}
---- !u!1 &1676121431
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 2002749487}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 2002749488}
-  m_Layer: 0
-  m_Name: Missing Prefab (Dummy)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1682472183
 GameObject:
   m_ObjectHideFlags: 0
@@ -11097,18 +11054,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 121b550cc9f28a44cb357f0395e06a71, type: 3}
   m_IsPrefabParent: 0
---- !u!4 &2002749488
+--- !u!4 &2002749488 stripped
 Transform:
-  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400008, guid: 121b550cc9f28a44cb357f0395e06a71, type: 3}
   m_PrefabInternal: {fileID: 2002749487}
-  m_GameObject: {fileID: 1676121431}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 499897627}
-  m_RootOrder: 0
 --- !u!1001 &2025244713
 Prefab:
   m_ObjectHideFlags: 0
