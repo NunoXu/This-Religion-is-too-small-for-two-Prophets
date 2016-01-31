@@ -147,7 +147,9 @@ namespace Assets.Scripts
                     else if (type == Properties.CHICKEN)
                     {  }
                     else if (type == Properties.SHEEP)
-                    {                    }
+                    {
+                        GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().rockslider, new Vector3(10.75f, 0.15f, 6.0f), Quaternion.identity);
+                    }
                     else if(type == Properties.UNICORN)
                     {                    }
                     else if (type == Properties.GOAT)
@@ -163,6 +165,7 @@ namespace Assets.Scripts
                             GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().meteorr, new Vector3(-10.0f, 0.15f, -7.0f), Quaternion.identity);
                         }
                     }
+                    this.spawn.hasAnimal = false;
                     Destroy(this.gameObject);
                     gm.GetComponent<GameManager>().TriggerQueue(Properties.FIRST_PLAYER, Properties.SACRIFICE_KILL);
 
@@ -207,8 +210,19 @@ namespace Assets.Scripts
                             GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().meteorl, new Vector3(10.75f, 0.15f, -7.0f), Quaternion.identity);
                         }
                     }
-                    gm.GetComponent<GameManager>().TriggerQueue(Properties.SECOND_PLAYER, Properties.SACRIFICE_KILL);
+                    else if (type == Properties.CHICKEN)
+                    { }
+                    else if (type == Properties.SHEEP)
+                    { }
+                    else if (type == Properties.UNICORN)
+                    { }
+                    else if (type == Properties.GOAT)
+                    {
+                       
+                    }
+                    this.spawn.hasAnimal = false;
                     Destroy(this.gameObject);
+                    gm.GetComponent<GameManager>().TriggerQueue(Properties.SECOND_PLAYER, Properties.SACRIFICE_KILL);
 
                 }
                 else
