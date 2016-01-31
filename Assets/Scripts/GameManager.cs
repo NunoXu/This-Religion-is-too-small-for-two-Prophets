@@ -18,7 +18,8 @@ namespace Assets.Scripts
         public GameObject sheepModel;
         public GameObject unicornModel;
         public GameObject altarSystem;
-        public GameObject rockslide;
+        public GameObject rockslider;
+        public GameObject rockslidel;
         public GameObject meteorr;
         public GameObject meteorl;
         public bool meteor;

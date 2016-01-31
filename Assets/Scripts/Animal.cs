@@ -108,17 +108,8 @@ namespace Assets.Scripts
                     {                    }
                     else if (type == Properties.CAT)
                     {
-                        if (gm.GetComponent<GameManager>().meteor){ 
-                            gm.GetComponent<GameManager>().meteor = false;
-                            GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().meteorr, new Vector3(-10.0f, 0.15f, 6.0f), Quaternion.identity);
-                        }
-                        else
-                        {
-                            gm.GetComponent<GameManager>().meteor = true;
-                            GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().meteorr, new Vector3(-10.0f, 0.15f, -7.0f), Quaternion.identity);
-                        }
 
-                }
+                    }
                     else if (type == Properties.CHICKEN)
                     {  }
                     else if (type == Properties.SHEEP)
@@ -127,7 +118,16 @@ namespace Assets.Scripts
                     {                    }
                     else if (type == Properties.GOAT)
                     {
-                        
+                        if (gm.GetComponent<GameManager>().meteor)
+                        {
+                            gm.GetComponent<GameManager>().meteor = false;
+                            GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().meteorr, new Vector3(-10.0f, 0.15f, 6.0f), Quaternion.identity);
+                        }
+                        else
+                        {
+                            gm.GetComponent<GameManager>().meteor = true;
+                            GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().meteorr, new Vector3(-10.0f, 0.15f, -7.0f), Quaternion.identity);
+                        }
                     }
                     Destroy(this.gameObject);
                     gm.GetComponent<GameManager>().TriggerQueue(Properties.FIRST_PLAYER, Properties.SACRIFICE_KILL);
@@ -150,6 +150,18 @@ namespace Assets.Scripts
                     { }
                     else if (type == Properties.CAT)
                     {
+                       
+                    }
+                    else if (type == Properties.CHICKEN)
+                    { }
+                    else if (type == Properties.SHEEP)
+                    {
+                        GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().rockslidel, new Vector3(10.75f, 0.15f, 6.0f), Quaternion.identity);
+                    }
+                    else if (type == Properties.UNICORN)
+                    { }
+                    else if (type == Properties.GOAT)
+                    {
                         if (gm.GetComponent<GameManager>().meteor)
                         {
                             gm.GetComponent<GameManager>().meteor = false;
@@ -160,16 +172,6 @@ namespace Assets.Scripts
                             gm.GetComponent<GameManager>().meteor = true;
                             GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().meteorl, new Vector3(10.75f, 0.15f, -7.0f), Quaternion.identity);
                         }
-                    }
-                    else if (type == Properties.CHICKEN)
-                    { }
-                    else if (type == Properties.SHEEP)
-                    { }
-                    else if (type == Properties.UNICORN)
-                    { }
-                    else if (type == Properties.GOAT)
-                    {
-                       
                     }
                     gm.GetComponent<GameManager>().TriggerQueue(Properties.SECOND_PLAYER, Properties.SACRIFICE_KILL);
                     Destroy(this.gameObject);
