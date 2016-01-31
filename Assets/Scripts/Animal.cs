@@ -165,7 +165,9 @@ namespace Assets.Scripts
 
 
                     if ( type == Properties.HORSE)
-                    {                    }
+                    {
+                        GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().firewall, altar2.transform.position, Quaternion.identity);
+                    }
                     else if (type == Properties.CAT)
                     {
                         foreach(GameObject ob in P1tree)
@@ -224,7 +226,9 @@ namespace Assets.Scripts
 
                     GameObject ps = (GameObject)Instantiate(gm.GetComponent<GameManager>().altarSystem, altar2.transform.position, Quaternion.identity);
                     if (type == Properties.HORSE)
-                    { }
+                    {
+                        GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().firewall, altar1.transform.position, Quaternion.identity);
+                    }
                     else if (type == Properties.CAT)
                     {
                         foreach (GameObject ob in P2tree)
