@@ -147,7 +147,9 @@ namespace Assets.Scripts
                     else if (type == Properties.CHICKEN)
                     {  }
                     else if (type == Properties.SHEEP)
-                    {                    }
+                    {
+                        GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().rockslider, new Vector3(10.75f, 0.15f, 6.0f), Quaternion.identity);
+                    }
                     else if(type == Properties.UNICORN)
                     {                    }
                     else if (type == Properties.GOAT)
