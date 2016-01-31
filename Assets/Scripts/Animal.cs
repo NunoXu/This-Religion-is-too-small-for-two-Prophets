@@ -27,6 +27,7 @@ namespace Assets.Scripts
         GameObject carrier;
 
         Vector3 defaultY;
+        Vector3 height = new Vector3(0.0f, 1.0f, 0.0f);
 
         public int type;
         public int side;
@@ -143,9 +144,9 @@ namespace Assets.Scripts
 
         void carry(GameObject o)
         {
-            Vector3 nposition = carrier.transform.position + carrier.transform.forward * 1.25f;
+            Vector3 nposition = height + carrier.transform.position + carrier.transform.forward * 1.25f;
             o.transform.position = nposition;
-            if ((carrier == player1) && (Input.GetKeyDown(KeyCode.LeftControl)))
+            if ((carrier == player1) && (Input.GetButtonDown("Fire1")))
             {
                 carried = false;
                 player1.GetComponent<Player1>().hasSacrifice = false;
@@ -174,13 +175,9 @@ namespace Assets.Scripts
                     }
                     else if (type == Properties.CHICKEN)
                     {
-                        Vector2 thunderPos = UnityEngine.Random.insideUnitCircle;
-                        thunderPos *= 9.15f;
-                        thunderPos.x += -17.082f;
-                        thunderPos.y += -2.749f;
-                        
-                        GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().thunder, new Vector3(thunderPos.x, 0.15f, thunderPos.y), Quaternion.identity);
-                    }
+                        CalculateThunderP1();
+
+                        }
                     else if (type == Properties.SHEEP)
                     {
                         GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().rockslider, new Vector3(10.75f, 0.15f, 6.0f), Quaternion.identity);
@@ -213,7 +210,7 @@ namespace Assets.Scripts
                 nav.enabled = true;
                 this.GetComponent<Rigidbody>().detectCollisions = true;
             }
-            if ((carrier == player2) && (Input.GetKeyDown("[.]")))
+            if ((carrier == player2) && (Input.GetButtonDown("Fire12")))
             {
                 carried = false;
                 player2.GetComponent<Player2>().hasSacrifice = false;
@@ -237,13 +234,7 @@ namespace Assets.Scripts
                     }
                     else if (type == Properties.CHICKEN)
                     {
-                        Vector2 thunderPos = UnityEngine.Random.insideUnitCircle;
-                        thunderPos *= 9.15f;
-                        thunderPos.x += 3.572f;
-                        thunderPos.y += -2.714f;
-                        
-                        GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().thunder, new Vector3(thunderPos.x, 0.15f, thunderPos.y), Quaternion.identity);
-
+                        CalculateThunderP2();
                     }
                     else if (type == Properties.SHEEP)
                     {
@@ -313,6 +304,65 @@ namespace Assets.Scripts
 
         }
 
+        void CalculateThunderP2()
+        {
+            Vector2 thunderPos = UnityEngine.Random.insideUnitCircle;
+            thunderPos *= 9.15f;
+            thunderPos.x += 3.572f;
+            thunderPos.y += -2.714f;
+            GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().thunder, new Vector3(thunderPos.x, 0.15f, thunderPos.y), Quaternion.identity);
+
+            thunderPos = UnityEngine.Random.insideUnitCircle;
+            thunderPos *= 9.15f;
+            thunderPos.x += 3.572f;
+            thunderPos.y += -2.714f;
+            pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().thunder, new Vector3(thunderPos.x, 0.15f, thunderPos.y), Quaternion.identity);
+
+            thunderPos = UnityEngine.Random.insideUnitCircle;
+            thunderPos *= 9.15f;
+            thunderPos.x += 3.572f;
+            thunderPos.y += -2.714f;
+            pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().thunder, new Vector3(thunderPos.x, 0.15f, thunderPos.y), Quaternion.identity);
+
+            thunderPos = UnityEngine.Random.insideUnitCircle;
+            thunderPos *= 9.15f;
+            thunderPos.x += 3.572f;
+            thunderPos.y += -2.714f;
+            pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().thunder, new Vector3(thunderPos.x, 0.15f, thunderPos.y), Quaternion.identity);
+
+            pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().thunder, new Vector3(3.572f, 0.15f, -2.714f), Quaternion.identity);
+
+        }
+
+        void CalculateThunderP1()
+        {
+
+            Vector2 thunderPos = UnityEngine.Random.insideUnitCircle;
+            thunderPos *= 9.15f;
+            thunderPos.x += -17.082f;
+            thunderPos.y += -2.749f;
+            GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().thunder, new Vector3(thunderPos.x, 0.15f, thunderPos.y), Quaternion.identity);
+
+            thunderPos = UnityEngine.Random.insideUnitCircle;
+            thunderPos *= 9.15f;
+            thunderPos.x += -17.082f;
+            thunderPos.y += -2.749f;
+            pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().thunder, new Vector3(thunderPos.x, 0.15f, thunderPos.y), Quaternion.identity);
+
+            thunderPos = UnityEngine.Random.insideUnitCircle;
+            thunderPos *= 9.15f;
+            thunderPos.x += -17.082f;
+            thunderPos.y += -2.749f;
+            pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().thunder, new Vector3(thunderPos.x, 0.15f, thunderPos.y), Quaternion.identity);
+
+            thunderPos = UnityEngine.Random.insideUnitCircle;
+            thunderPos *= 9.15f;
+            thunderPos.x += -17.082f;
+            thunderPos.y += -2.749f;
+            pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().thunder, new Vector3(thunderPos.x, 0.15f, thunderPos.y), Quaternion.identity);
+
+            pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().thunder, new Vector3(-17.082f, 0.15f, -2.749f), Quaternion.identity);
+        }
 
     }
 }
