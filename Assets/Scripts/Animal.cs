@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Movement;
 using Assets.Scripts.Movement.DynamicMovement;
+using Assets.Scripts.Spells;
 using Assets.Scripts.Utils;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace Assets.Scripts
         GameObject player2;
         GameObject altar1;
         GameObject altar2;
+        GameObject[] P1tree;
+        GameObject[] P2tree;
         GameObject gm;
 
         public Spawn spawn;
@@ -50,6 +53,8 @@ namespace Assets.Scripts
             altar1 = GameObject.FindWithTag("Altar1");
             altar2 = GameObject.FindWithTag("Altar2");
             gm = GameObject.FindWithTag("GameManager");
+            P1tree = GameObject.FindGameObjectsWithTag("P1 Tree");
+            P2tree = GameObject.FindGameObjectsWithTag("P2 Tree");
             defaultY = this.transform.position;
 
             this.KinematicData = new KinematicData(new StaticData(gameObject.transform.position));
@@ -142,7 +147,10 @@ namespace Assets.Scripts
                     {                    }
                     else if (type == Properties.CAT)
                     {
-
+                        foreach(GameObject ob in P1tree)
+                        {
+                            ob.GetComponent<HeatWaveSpell>().Invoke();
+                        }
                     }
                     else if (type == Properties.CHICKEN)
                     {  }
@@ -187,7 +195,10 @@ namespace Assets.Scripts
                     { }
                     else if (type == Properties.CAT)
                     {
-                       
+                        foreach (GameObject ob in P2tree)
+                        {
+                            ob.GetComponent<HeatWaveSpell>().Invoke();
+                        }
                     }
                     else if (type == Properties.CHICKEN)
                     { }
@@ -218,10 +229,7 @@ namespace Assets.Scripts
                     }
                     else if (type == Properties.UNICORN)
                     { }
-                    else if (type == Properties.GOAT)
-                    {
-                       
-                    }
+
                     this.spawn.hasAnimal = false;
                     Destroy(this.gameObject);
                     gm.GetComponent<GameManager>().TriggerQueue(Properties.SECOND_PLAYER, Properties.SACRIFICE_KILL);

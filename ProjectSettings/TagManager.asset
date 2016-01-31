@@ -12,6 +12,8 @@ TagManager:
   - partS1
   - partS2
   - partS3
+  - P1 Tree
+  - P2 Tree
   layers:
   - Default
   - TransparentFX
