@@ -80,10 +80,10 @@ namespace Assets.Scripts
             }
             else
             {
-                Vector3 dest = this.spawn.transform.position + UnityEngine.Random.insideUnitSphere * 10;
+                Vector3 dest = this.spawn.transform.position + UnityEngine.Random.insideUnitSphere * 20.0f;
                 dest.y = 0;
-                GotoPosition(dest, 1.0f-this.Weight());
-
+                GotoPosition(dest, this.MaxSpeed);
+                /*
                 if (this.Movement != null)
             {
                 MovementOutput steering = this.Movement.GetMovement();
@@ -96,7 +96,7 @@ namespace Assets.Scripts
 
                 this.gameObject.transform.position = this.KinematicData.position;
                 this.gameObject.transform.rotation = Quaternion.AngleAxis(this.KinematicData.orientation * MathConstants.MATH_180_PI, Vector3.up);
-            }
+            }*/
                 pickUp();
             }
         }
@@ -193,12 +193,15 @@ namespace Assets.Scripts
                     this.spawn.hasAnimal = false;
                     Destroy(this.gameObject);
                     gm.GetComponent<GameManager>().TriggerQueue(Properties.FIRST_PLAYER, Properties.SACRIFICE_KILL);
-
+                    return;
                 }
                 else
                 {
                     o.transform.position = new Vector3(nposition.x, defaultY.y, nposition.z);
                 }
+
+                nav.enabled = true;
+                this.GetComponent<Rigidbody>().detectCollisions = true;
             }
             if ((carrier == player2) && (Input.GetKeyDown("[.]")))
             {
@@ -251,12 +254,15 @@ namespace Assets.Scripts
                     this.spawn.hasAnimal = false;
                     Destroy(this.gameObject);
                     gm.GetComponent<GameManager>().TriggerQueue(Properties.SECOND_PLAYER, Properties.SACRIFICE_KILL);
-
+                    return;
                 }
                 else
                 {
                     o.transform.position = new Vector3(nposition.x, defaultY.y, nposition.z);
                 }
+
+                nav.enabled = true;
+                this.GetComponent<Rigidbody>().detectCollisions = true;
             }
         }
 
@@ -270,7 +276,9 @@ namespace Assets.Scripts
                     
                     carrier = player1;
                     carried = true;
+                    nav.enabled = false;
                     player1.GetComponent<Player1>().setSacrifice(this.gameObject);
+                    this.GetComponent<Rigidbody>().detectCollisions = false;
                 }
             }
 
@@ -281,7 +289,9 @@ namespace Assets.Scripts
                 {
                     carrier = player2;
                     carried = true;
+                    nav.enabled = false;
                     player2.GetComponent<Player2>().setSacrifice(this.gameObject);
+                    this.GetComponent<Rigidbody>().detectCollisions = false;
                 }
             }
 

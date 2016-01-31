@@ -1756,7 +1756,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 462017480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.082, y: 1.127, z: -2.749}
+  m_LocalPosition: {x: -17.082, y: 0.5, z: -2.749}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1903095725}
@@ -2970,6 +2970,10 @@ Prefab:
     - target: {fileID: 19829336, guid: bad0018eb9256e6409155981dd5af9a2, type: 2}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487002, guid: bad0018eb9256e6409155981dd5af9a2, type: 2}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11484642, guid: bad0018eb9256e6409155981dd5af9a2, type: 2}
@@ -9103,7 +9107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerOneObject: {fileID: 1227845081}
   PlayerTwoObject: {fileID: 1781507703}
-  horseModel: {fileID: 109872, guid: 73aa6da054cdfad41b210325035e2493, type: 2}
+  horseModel: {fileID: 108588, guid: d7cccbe1fe6ea104c9c678fdbf29e5e1, type: 2}
   kittenModel: {fileID: 151602, guid: 9b787de0e71899f4db0631ab394b68d5, type: 2}
   goatModel: {fileID: 109872, guid: 73aa6da054cdfad41b210325035e2493, type: 2}
   roosterModel: {fileID: 189374, guid: b3c40c90f4e5f7a4aa7cba7b751e1138, type: 2}
@@ -9130,6 +9134,7 @@ MonoBehaviour:
   - {fileID: 891027080}
   - {fileID: 696187863}
   - {fileID: 1095641974}
+  HUDManager: {fileID: 0}
 --- !u!1001 &1944651760
 Prefab:
   m_ObjectHideFlags: 0
@@ -9419,7 +9424,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1983130616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.572, y: 1.164, z: -2.714}
+  m_LocalPosition: {x: 3.572, y: 0.5, z: -2.714}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 692086915}
