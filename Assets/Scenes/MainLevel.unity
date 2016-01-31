@@ -9123,6 +9123,7 @@ MonoBehaviour:
   meteorr: {fileID: 130650, guid: 9ddc0c88df3f68c44a530f9144e4deed, type: 2}
   meteorl: {fileID: 196368, guid: 85f3d50e95050d44ea4783b78dd471d8, type: 2}
   meteor: 0
+  thunder: {fileID: 130886, guid: 6ec9eb72960641a40adc93ac2106dfde, type: 2}
   SacrificesPlayerOne:
   - {fileID: 692086914}
   - {fileID: 368128265}
