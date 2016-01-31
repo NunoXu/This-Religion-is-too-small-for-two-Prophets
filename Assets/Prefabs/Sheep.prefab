@@ -28,6 +28,7 @@ GameObject:
   - 33: {fileID: 3323902}
   - 23: {fileID: 2310156}
   - 65: {fileID: 6586264}
+  - 114: {fileID: 11420524}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Untagged
@@ -105,6 +106,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.269446, y: 1.3099115, z: 1.0963572}
   m_Center: {x: -0.45304435, y: -0.008194341, z: 0.5445189}
+--- !u!114 &11420524
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe7e0d2e64a6ae4cb498ddde2ab4713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {fileID: 0}
+  type: 0
 --- !u!198 &19841542
 ParticleSystem:
   m_ObjectHideFlags: 1
