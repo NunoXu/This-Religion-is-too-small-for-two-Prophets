@@ -214,7 +214,6 @@ namespace Assets.Scripts
                 if (Vector3.Distance(this.gameObject.transform.position, altar2.transform.position) < 1.25f)
                 {
                     GameObject ps = (GameObject)Instantiate(gm.GetComponent<GameManager>().altarSystem, altar2.transform.position, Quaternion.identity);
-                    ps.GetComponent<ParticleSystem>().Play();
                     if (type == Properties.HORSE)
                     { }
                     else if (type == Properties.CAT)
