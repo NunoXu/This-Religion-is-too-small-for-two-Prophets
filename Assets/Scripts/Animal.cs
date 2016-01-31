@@ -163,6 +163,7 @@ namespace Assets.Scripts
                     {
                         
                     }
+                    this.spawn.hasAnimal = false;
                     Destroy(this.gameObject);
                     gm.GetComponent<GameManager>().TriggerQueue(Properties.FIRST_PLAYER, Properties.SACRIFICE_KILL);
 
@@ -205,8 +206,9 @@ namespace Assets.Scripts
                     {
                        
                     }
-                    gm.GetComponent<GameManager>().TriggerQueue(Properties.SECOND_PLAYER, Properties.SACRIFICE_KILL);
+                    this.spawn.hasAnimal = false;
                     Destroy(this.gameObject);
+                    gm.GetComponent<GameManager>().TriggerQueue(Properties.SECOND_PLAYER, Properties.SACRIFICE_KILL);
 
                 }
                 else
