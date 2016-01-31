@@ -4,7 +4,7 @@ namespace Assets.Scripts
 {
     public static class Properties
     {
-        public const int ANIMAL_TYPES = 6;
+        public const int ANIMAL_TYPES = 5;
         public const int CAT = 0;
         public const int HORSE = 1;
         public const int SHEEP = 2;

@@ -21,7 +21,7 @@ namespace Assets.Scripts.Spells
             if (tag != "Player1" && tag != "Player2")
             {
                 col.gameObject.GetComponent<Animal>().spawn.hasAnimal = false;
-                gameManager.TriggerQueue(col.gameObject.GetComponent<Animal>().Carrier().PlayerNumber, Properties.NATURAL_KILL);
+                gameManager.TriggerQueue(col.gameObject.GetComponent<Animal>().side, Properties.NATURAL_KILL);
                 Destroy(col.gameObject);
             } else if (tag == "Player1" || tag == "Player2")
             {
