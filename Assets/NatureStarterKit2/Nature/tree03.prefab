@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11429616}
   m_Layer: 0
   m_Name: tree03
-  m_TagString: P2 Tree
+  m_TagString: P1 Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,6 @@ GameObject:
   - 199: {fileID: 19906078}
   - 198: {fileID: 19852528}
   - 136: {fileID: 13678214}
-  - 114: {fileID: 11442266}
   m_Layer: 0
   m_Name: TreeFireAnimation
   m_TagString: Untagged
@@ -58,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.28, y: 2.484884, z: -6.64}
+  m_LocalPosition: {x: -21.91, y: 0.038359374, z: 0.7}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 412462}
@@ -386,7 +385,7 @@ MonoBehaviour:
   m_Name: Tree Data
   m_EditorClassIdentifier: 
   _uniqueID: 300
-  materialHash: 074cdc1b3e9ad5a248ed1461f3a04ebe215482368
+  materialHash: a75a3ac509de10195b0d8446d9f8d36c215482368
   root:
     _uniqueID: 1
     seed: 1234
@@ -4657,22 +4656,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  Player: 0
-  ps: {fileID: 0}
+  ps: {fileID: 19852528}
   startTime: 0
-  fireTime: 5
---- !u!114 &11442266
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 199362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 406a0fcf7e0d5de46a6528493c038da8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spell: {fileID: 11429616}
 --- !u!136 &13678214
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -4681,7 +4666,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 199362}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 2.798964
   m_Height: 1.1192514
   m_Direction: 1

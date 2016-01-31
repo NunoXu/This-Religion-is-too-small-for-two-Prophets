@@ -10,7 +10,7 @@ namespace Assets.Scripts.Spells
     {
         public ParticleSystem ps;
         public float startTime;
-        public float fireTime = 5f;
+        private float fireTime = 15f;
 
         private bool done = true;
 

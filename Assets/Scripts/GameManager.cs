@@ -23,6 +23,7 @@ namespace Assets.Scripts
         public GameObject meteorr;
         public GameObject meteorl;
         public bool meteor;
+        public GameObject thunder;
 
         public GameObject[] SacrificesPlayerOne;
         public GameObject[] SacrificesPlayerTwo;
@@ -158,6 +159,7 @@ namespace Assets.Scripts
                 else
                 {
                     spawn.CurrentAnimalObject = (GameObject)GenerateRandomAnimal(CalculatePoint(spawn.transform.position));
+                    spawn.CurrentAnimal().side = player;
                     spawn.CurrentAnimal().spawn = spawn;
                     spawn.hasAnimal = true;
                     if (player == Properties.FIRST_PLAYER)
