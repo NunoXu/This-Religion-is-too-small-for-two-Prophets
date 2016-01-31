@@ -71,6 +71,8 @@ GameObject:
   - 95: {fileID: 9540962}
   - 114: {fileID: 11493464}
   - 65: {fileID: 6576072}
+  - 143: {fileID: 14354142}
+  - 114: {fileID: 11485296}
   m_Layer: 0
   m_Name: Horse
   m_TagString: Untagged
@@ -1350,6 +1352,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11485296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0864d623a0a9ea429ab7834111dc45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  directionChangeInterval: 1
+  maxHeadingChange: 30
 --- !u!114 &11493464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1361,7 +1377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe7e0d2e64a6ae4cb498ddde2ab4713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  spawn: {fileID: 0}
+  type: 1
 --- !u!137 &13757014
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1442,6 +1459,23 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00004580617, y: -0.5345476, z: 0.3749715}
     m_Extent: {x: 0.39651868, y: 1.2062383, z: 1.6412333}
   m_DirtyAABB: 0
+--- !u!143 &14354142
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108588}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &19860140
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -2988,7 +3022,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_StepOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 108588}

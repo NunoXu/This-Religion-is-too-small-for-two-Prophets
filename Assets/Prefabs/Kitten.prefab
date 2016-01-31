@@ -513,6 +513,8 @@ GameObject:
   - 95: {fileID: 9529706}
   - 114: {fileID: 11432114}
   - 65: {fileID: 6596064}
+  - 143: {fileID: 14316380}
+  - 114: {fileID: 11496476}
   m_Layer: 0
   m_Name: Kitten
   m_TagString: Player
@@ -1864,7 +1866,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe7e0d2e64a6ae4cb498ddde2ab4713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawn: {fileID: 0}
   type: 0
+--- !u!114 &11496476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0864d623a0a9ea429ab7834111dc45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  directionChangeInterval: 1
+  maxHeadingChange: 30
 --- !u!137 &13708154
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2152,6 +2169,23 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.032718547, y: -0.060557842, z: 0}
     m_Extent: {x: 0.020425074, y: 0.018849328, z: 0.06739922}
   m_DirtyAABB: 0
+--- !u!143 &14316380
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &19804706
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3698,7 +3732,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_StepOffset
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 151602}
