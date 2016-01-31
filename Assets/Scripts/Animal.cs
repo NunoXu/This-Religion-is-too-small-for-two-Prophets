@@ -32,19 +32,7 @@ namespace Assets.Scripts
 
         //DynamicCharacter
         public GameObject GameObject { get; protected set; }
-        public KinematicData KinematicData { get; protected set; }
-        private DynamicMovement movement;
-        public DynamicMovement Movement
-        {
-            get { return this.movement; }
-            set
-            {
-                this.movement = value;
-                if (this.movement != null) this.movement.Character = this.KinematicData;
-            }
-        }
-        public float Drag { get; set; }
-        public float MaxSpeed { get; set; }
+
 
         public void Start()
         {
@@ -52,44 +40,24 @@ namespace Assets.Scripts
             player2 = GameObject.FindWithTag("Player2");
             altar1 = GameObject.FindWithTag("Altar1");
             altar2 = GameObject.FindWithTag("Altar2");
-            ps1 = GameObject.FindWithTag("partS1");
+          /*  ps1 = GameObject.FindWithTag("partS1");
             ps2 = GameObject.FindWithTag("partS2");
             ps3 = GameObject.FindWithTag("partS3");
-            gm = GameObject.FindWithTag("GameManager");
+            */gm = GameObject.FindWithTag("GameManager");
             defaultY = this.transform.position;
-
-            this.KinematicData = new KinematicData(new StaticData(gameObject.transform.position));
-            this.GameObject = gameObject;
-            this.Drag = 1;
-            this.MaxSpeed = 20.0f;
-
-            this.Movement = new DynamicWander(1.5f, 0.6f, 1.0f- this.Weight())
-            {
-                Character = this.KinematicData,
-                Target = new KinematicData(new StaticData(this.spawn.gameObject.transform.position))
-            };
 
         }
 
         public void Update()
         {
+          
             if (carried)
             {
                 carry(this.gameObject);
             }
             else
             {
-                if (this.Movement != null)
-                {
-                    MovementOutput steering = this.Movement.GetMovement();
-
-                    this.KinematicData.Integrate(steering, this.Drag, Time.deltaTime);
-                    this.KinematicData.SetOrientationFromVelocity();
-                    this.KinematicData.TrimMaxSpeed(this.MaxSpeed);
-
-                    this.GameObject.transform.position = this.KinematicData.position;
-                    this.GameObject.transform.rotation = Quaternion.AngleAxis(this.KinematicData.orientation * MathConstants.MATH_180_PI, Vector3.up);
-                }
+                
                 pickUp();
             }
         }
@@ -138,11 +106,11 @@ namespace Assets.Scripts
                 player1.GetComponent<Player1>().hasSacrifice = false;
 
                 if (Vector3.Distance(this.gameObject.transform.position, altar1.transform.position) < 1.25f)
-                {
+                {/*
                     ps1.GetComponent<ParticleSystem>().Play();
                     ps2.GetComponent<ParticleSystem>().Play();
                     ps3.GetComponent<ParticleSystem>().Play();
-                    gm.GetComponent<GameManager>().TriggerQueue(Properties.FIRST_PLAYER,Properties.SACRIFICE_KILL);
+                   */ gm.GetComponent<GameManager>().TriggerQueue(Properties.FIRST_PLAYER,Properties.SACRIFICE_KILL);
                     Destroy(this.gameObject);
                 }
                 else

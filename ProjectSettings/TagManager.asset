@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Player1
   - Player2
+  - Altar1
+  - Altar2
+  - GameManager
   layers:
   - Default
   - TransparentFX
