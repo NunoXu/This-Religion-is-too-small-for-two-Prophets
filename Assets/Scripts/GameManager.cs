@@ -21,6 +21,7 @@ namespace Assets.Scripts
         public GameObject rockslide;
         public GameObject meteorr;
         public GameObject meteorl;
+        public bool meteor;
 
         public GameObject[] SacrificesPlayerOne;
         public GameObject[] SacrificesPlayerTwo;
@@ -45,6 +46,7 @@ namespace Assets.Scripts
 
         public void Start()
         {
+            this.meteor = false;
             this.RespawnQueuePlayerOne = new Queue<int>();
             this.RespawnQueuePlayerTwo = new Queue<int>();
 
