@@ -16,16 +16,15 @@ namespace Assets.Scripts.Spells
         public Transform startPosition;
         public Transform endPosition;
         public float direction;
+        public Collider meteorCollider;
+        public int Player;
 
         void Start()
         {
             startTime = Time.time;
-            
+            gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         }
-        void Update()
-        {
-            
-        }
+        
 
         void FixedUpdate()
         {

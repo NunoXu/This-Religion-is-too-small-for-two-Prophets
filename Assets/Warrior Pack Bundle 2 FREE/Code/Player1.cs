@@ -44,6 +44,10 @@ namespace Assets.Scripts
             {
                 invokers[1].Invoke();
             }
+            if (Input.GetButtonDown("ThunderSpell1"))
+            {
+                invokers[2].Invoke();
+            }
             UpdateMovement();  //update character position and facing
         }
 
