@@ -9083,6 +9083,9 @@ MonoBehaviour:
   sheepModel: {fileID: 175348, guid: c64849f5720ef284ab0aa1ab568705dd, type: 2}
   unicornModel: {fileID: 132268, guid: 99f3ffa98ec393f4f95be5b0afe305e3, type: 2}
   altarSystem: {fileID: 191506, guid: 886ce6a631ac62940a40f66879a0bc79, type: 2}
+  rockslide: {fileID: 139302, guid: ffd4011a0f6c7f047a5f6f94735e71bf, type: 2}
+  meteorr: {fileID: 130650, guid: 9ddc0c88df3f68c44a530f9144e4deed, type: 2}
+  meteorl: {fileID: 196368, guid: 85f3d50e95050d44ea4783b78dd471d8, type: 2}
   SacrificesPlayerOne:
   - {fileID: 692086914}
   - {fileID: 368128265}
