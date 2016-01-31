@@ -23,6 +23,7 @@ namespace Assets.Scripts
         public GameObject meteorr;
         public GameObject meteorl;
         public bool meteor;
+        public GameObject thunder;
 
         public GameObject[] SacrificesPlayerOne;
         public GameObject[] SacrificesPlayerTwo;

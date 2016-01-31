@@ -163,7 +163,14 @@ namespace Assets.Scripts
                         }
                     }
                     else if (type == Properties.CHICKEN)
-                    {  }
+                    {
+                        Vector2 thunderPos = UnityEngine.Random.insideUnitCircle;
+                        thunderPos *= 9.15f;
+                        thunderPos.x += -17.082f;
+                        thunderPos.y += -2.749f;
+                        
+                        GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().thunder, new Vector3(thunderPos.x, 0.15f, thunderPos.y), Quaternion.identity);
+                    }
                     else if (type == Properties.SHEEP)
                     {
                         GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().rockslider, new Vector3(10.75f, 0.15f, 6.0f), Quaternion.identity);
@@ -211,7 +218,15 @@ namespace Assets.Scripts
                         }
                     }
                     else if (type == Properties.CHICKEN)
-                    { }
+                    {
+                        Vector2 thunderPos = UnityEngine.Random.insideUnitCircle;
+                        thunderPos *= 9.15f;
+                        thunderPos.x += 3.572f;
+                        thunderPos.y += -2.714f;
+                        
+                        GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().thunder, new Vector3(thunderPos.x, 0.15f, thunderPos.y), Quaternion.identity);
+
+                    }
                     else if (type == Properties.SHEEP)
                     {
                         GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().rockslidel, new Vector3(10.75f, 0.15f, 6.0f), Quaternion.identity);
@@ -231,14 +246,7 @@ namespace Assets.Scripts
                             GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().meteorl, new Vector3(10.75f, 0.15f, -7.0f), Quaternion.identity);
                         }
                     }
-                    else if (type == Properties.CHICKEN)
-                    { }
-                    else if (type == Properties.SHEEP)
-                    {
-                        GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().rockslider, new Vector3(10.75f, 0.15f, 6.0f), Quaternion.identity);
-                    }
-                    else if (type == Properties.UNICORN)
-                    { }
+                    
 
                     this.spawn.hasAnimal = false;
                     Destroy(this.gameObject);
