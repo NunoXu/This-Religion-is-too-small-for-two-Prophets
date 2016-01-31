@@ -276,7 +276,7 @@ namespace Assets.Scripts
         {
             gameObject.GetComponentInChildren<ParticleSystem>().Play();
             if ((Vector3.Distance(player1.transform.position,this.gameObject.transform.position) < 1.5) &&
-                (Input.GetKeyDown(KeyCode.LeftControl)))
+                (Input.GetButtonDown("Fire1")))
             {
                 if (player1.GetComponent<Player1>().hasSacrifice == false)
                 {
@@ -290,7 +290,7 @@ namespace Assets.Scripts
             }
 
             if ((Vector3.Distance(player2.transform.position,this.gameObject.transform.position) < 1.5) &&
-                (Input.GetKeyDown("[.]")))
+                (Input.GetButtonDown("Fire12")))
             {
                 if (player2.GetComponent<Player2>().hasSacrifice == false)
                 {
