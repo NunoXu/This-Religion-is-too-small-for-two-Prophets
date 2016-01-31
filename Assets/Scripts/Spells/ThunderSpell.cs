@@ -19,11 +19,12 @@ namespace Assets.Scripts.Spells
         void Start()
         {
             startTime = Time.time;
+            gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         }
 
         void FixedUpdate()
         {
-            if (done && particles.particleCount <=0)
+            if (done && particles.isPlaying && particles.particleCount <=0)
             {
                 GameObject.Destroy(this.gameObject);
             }
@@ -31,11 +32,11 @@ namespace Assets.Scripts.Spells
             if (!done && Time.time - startTime >= timeForThunder)
             {
                 particles.Play();
+                targetCollider.enabled = true;
                 done = true;
             }
-
             
-
         }
+
     }
 }

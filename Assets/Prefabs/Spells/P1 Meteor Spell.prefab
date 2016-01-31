@@ -29,7 +29,7 @@ GameObject:
   - 135: {fileID: 13598344}
   - 23: {fileID: 2300710}
   - 26: {fileID: 2676370}
-  - 114: {fileID: 11497412}
+  - 114: {fileID: 11490450}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -147,7 +147,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.85, y: 0, z: 5.71}
+  m_LocalPosition: {x: 10.9, y: 0, z: 5.76}
   m_LocalScale: {x: 0.6541422, y: 0.6541422, z: 0.6541422}
   m_Children:
   - {fileID: 409644}
@@ -319,6 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  Player: 2
   speed: 1
   sphereTransform: {fileID: 409644}
   startTime: 0
@@ -327,8 +328,7 @@ MonoBehaviour:
   endPosition: {fileID: 467842}
   direction: -1
   meteorCollider: {fileID: 13598344}
-  Player: 0
---- !u!114 &11497412
+--- !u!114 &11490450
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 122040}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ed99a46db396b49b02803e4a497f2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 406a0fcf7e0d5de46a6528493c038da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spell: {fileID: 11428262}
@@ -1848,7 +1848,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: Player
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 196368}
