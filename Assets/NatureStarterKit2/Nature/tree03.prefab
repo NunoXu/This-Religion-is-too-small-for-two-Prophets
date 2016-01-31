@@ -152,16 +152,16 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _ShadowTex
+          name: _BumpSpecMap
         second:
-          m_Texture: {fileID: 2800000, guid: fa29af801d4654e469207cffeea8e8cf, type: 3}
+          m_Texture: {fileID: 2800000, guid: 62a80745906a31e4e80055fd7ec2add8, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _BumpSpecMap
+          name: _ShadowTex
         second:
-          m_Texture: {fileID: 2800000, guid: 62a80745906a31e4e80055fd7ec2add8, type: 3}
+          m_Texture: {fileID: 2800000, guid: fa29af801d4654e469207cffeea8e8cf, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -385,7 +385,7 @@ MonoBehaviour:
   m_Name: Tree Data
   m_EditorClassIdentifier: 
   _uniqueID: 300
-  materialHash: 074cdc1b3e9ad5a248ed1461f3a04ebe215482368
+  materialHash: a75a3ac509de10195b0d8446d9f8d36c215482368
   root:
     _uniqueID: 1
     seed: 1234
@@ -4658,7 +4658,6 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   ps: {fileID: 19852528}
   startTime: 0
-  fireTime: 5
 --- !u!136 &13678214
 CapsuleCollider:
   m_ObjectHideFlags: 1
