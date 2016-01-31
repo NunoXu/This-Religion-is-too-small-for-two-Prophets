@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.Spells;
 
 namespace Assets.Scripts
 {
@@ -7,6 +8,7 @@ namespace Assets.Scripts
     {
 
         public Animator animator;
+        public Invoker[] invokers;
 
         public float rotationSpeed = 30;
         public Vector3 inputVec;

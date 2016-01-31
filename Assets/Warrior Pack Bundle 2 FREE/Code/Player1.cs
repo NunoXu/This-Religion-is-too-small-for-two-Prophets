@@ -35,6 +35,15 @@ namespace Assets.Scripts
                 animator.SetTrigger("Attack1Trigger");
                 StartCoroutine(COStunPause(1.2f));
             }
+
+            if (Input.GetButtonDown("MeteorSpell1"))
+            {
+                invokers[0].Invoke();
+            }
+            if (Input.GetButtonDown("HeatWaveSpell1"))
+            {
+                invokers[1].Invoke();
+            }
             UpdateMovement();  //update character position and facing
         }
 

@@ -17,6 +17,7 @@ namespace Assets.Scripts
         public GameObject roosterModel;
         public GameObject sheepModel;
         public GameObject unicornModel;
+        public GameObject altarSystem;
 
         public GameObject[] SacrificesPlayerOne;
         public GameObject[] SacrificesPlayerTwo;
@@ -220,5 +221,6 @@ namespace Assets.Scripts
         {
 
         }
+
     }
 }

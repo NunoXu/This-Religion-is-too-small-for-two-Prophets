@@ -9,6 +9,9 @@ TagManager:
   - Altar1
   - Altar2
   - GameManager
+  - partS1
+  - partS2
+  - partS3
   layers:
   - Default
   - TransparentFX
