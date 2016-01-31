@@ -156,6 +156,13 @@ namespace Assets.Scripts
                 {
 
                     GameObject ps = (GameObject)Instantiate(gm.GetComponent<GameManager>().altarSystem, altar1.transform.position, Quaternion.identity);
+
+                   if(UnityEngine.Random.Range(0.0f,1.0f)> 0.75f)
+                   {
+                    altar1.GetComponentsInChildren<AudioSource>()[UnityEngine.Random.Range(0,3)].Play();
+                   }
+
+
                     if ( type == Properties.HORSE)
                     {                    }
                     else if (type == Properties.CAT)
@@ -213,6 +220,11 @@ namespace Assets.Scripts
                 gameObject.GetComponentInChildren<ParticleSystem>().Stop();
                 if (Vector3.Distance(this.gameObject.transform.position, altar2.transform.position) < 1.25f)
                 {
+                    if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.75f)
+                    {
+                        altar1.GetComponentsInChildren<AudioSource>()[UnityEngine.Random.Range(0, 3)].Play();
+                    }
+
                     GameObject ps = (GameObject)Instantiate(gm.GetComponent<GameManager>().altarSystem, altar2.transform.position, Quaternion.identity);
                     if (type == Properties.HORSE)
                     { }
