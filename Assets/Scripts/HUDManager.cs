@@ -12,11 +12,13 @@ namespace Assets.Scripts
     {
         public GameObject GameOverPanel;
         public Text GameOverText;
+        public float StartTime;
 
         public void SetGameOver(int player)
         {
             GameOverPanel.SetActive(true);
             GameOverText.text = "Player " + player + " Won!";
+            StartTime = Time.time;
         }
 
         public void RestartLevel ()
@@ -26,7 +28,7 @@ namespace Assets.Scripts
 
         void Update()
         {
-            if (GameOverPanel.activeSelf && Input.anyKeyDown)
+            if (GameOverPanel.activeSelf && Input.anyKeyDown && Time.time - StartTime >= 1f)
             {
                 RestartLevel();
             }
