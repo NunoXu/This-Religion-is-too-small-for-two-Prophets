@@ -157,6 +157,7 @@ namespace Assets.Scripts
                 else
                 {
                     spawn.CurrentAnimalObject = (GameObject)GenerateRandomAnimal(CalculatePoint(spawn.transform.position));
+                    spawn.CurrentAnimal().side = player;
                     spawn.CurrentAnimal().spawn = spawn;
                     spawn.hasAnimal = true;
                     if (player == Properties.FIRST_PLAYER)

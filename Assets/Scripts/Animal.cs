@@ -29,6 +29,7 @@ namespace Assets.Scripts
         Vector3 defaultY;
 
         public int type;
+        public int side;
 
         //DynamicCharacter
         public KinematicData KinematicData { get; protected set; }
@@ -44,7 +45,7 @@ namespace Assets.Scripts
         }
         public float Drag { get; set; }
         public float MaxSpeed { get; set; }
-
+        public NavMeshAgent nav { get; set; }
 
         public void Start()
         {
@@ -61,12 +62,13 @@ namespace Assets.Scripts
             this.Drag = 1;
             this.MaxSpeed = 1.0f - this.Weight();
 
-            this.Movement = new DynamicWander(0.5f, 0.05f, this.MaxSpeed)
-            {
-                Character = this.KinematicData,
-                Target = new KinematicData(new StaticData(this.spawn.gameObject.transform.position))
-            };
-
+            /*  this.Movement = new DynamicWander(0.5f, 0.05f, this.MaxSpeed)
+              {
+                  Character = this.KinematicData,
+                  Target = new KinematicData(new StaticData(this.spawn.gameObject.transform.position))
+              };
+  */
+            nav = GetComponent<NavMeshAgent>();
         }
 
         public void Update()
@@ -78,6 +80,10 @@ namespace Assets.Scripts
             }
             else
             {
+                Vector3 dest = this.spawn.transform.position + UnityEngine.Random.insideUnitSphere * 10;
+                dest.y = 0;
+                GotoPosition(dest, 1.0f-this.Weight());
+
                 if (this.Movement != null)
             {
                 MovementOutput steering = this.Movement.GetMovement();
@@ -94,7 +100,11 @@ namespace Assets.Scripts
                 pickUp();
             }
         }
-
+        private void GotoPosition(Vector3 pos, float speed)
+        {
+            nav.speed = speed;
+            nav.SetDestination(pos);
+        }
         public Player Carrier()
         {
                 return carrier.GetComponent<Player>();
