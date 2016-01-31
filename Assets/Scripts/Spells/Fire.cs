@@ -6,10 +6,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Spells
 {
-    public class Spell : MonoBehaviour
+    public class Fire : MonoBehaviour
     {
-
-        public GameManager gameManager;
-        public int Player;
     }
 }

@@ -28,6 +28,7 @@ namespace Assets.Scripts
         public GameObject[] SacrificesPlayerOne;
         public GameObject[] SacrificesPlayerTwo;
 
+        public HUDManager HUDManager;
         //private fields
 
         private int MaxNumberOfObjectsPerPlayer = 6;
@@ -230,5 +231,12 @@ namespace Assets.Scripts
 
         }
 
+        public void KillPlayer(Player player)
+        {
+            int playerNumber = player.PlayerNumber;
+            player.animator.SetTrigger("DeathTrigger");
+            HUDManager.SetGameOver(playerNumber);
+
+        }
     }
 }

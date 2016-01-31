@@ -19,6 +19,7 @@ namespace Assets.Scripts.Spells
             startTime = Time.time;
             ps.Play();
             done = false;
+            gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         }
 
         void Update()

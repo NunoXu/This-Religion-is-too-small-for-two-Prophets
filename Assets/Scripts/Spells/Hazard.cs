@@ -6,19 +6,25 @@ using UnityEngine;
 
 namespace Assets.Scripts.Spells
 {
-    class Meteor : MonoBehaviour
+    public class Hazard : MonoBehaviour
     {
-        public MeteorSpell spell;
 
+        public Spell spell;
         void OnTriggerEnter(Collider col)
         {
             var tag = col.gameObject.tag;
             if (tag != "Player1" && tag != "Player2")
             {
                 col.gameObject.GetComponent<Animal>().spawn.hasAnimal = false;
-                spell.gameManager.TriggerQueue(spell.Player, Properties.NATURAL_KILL);
+                spell.gameManager.TriggerQueue(col.gameObject.GetComponent<Animal>().Carrier().PlayerNumber, Properties.NATURAL_KILL);
                 Destroy(col.gameObject);
+            } else if (tag == "Player1" || tag == "Player2")
+            {
+                Player player = col.gameObject.GetComponent<Player>();
+                spell.gameManager.KillPlayer(player);
             }
+
+            
         }
     }
 }

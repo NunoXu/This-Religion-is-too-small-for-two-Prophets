@@ -17,7 +17,6 @@ namespace Assets.Scripts.Spells
         public Transform endPosition;
         public float direction;
         public Collider meteorCollider;
-        public int Player;
 
         void Start()
         {
