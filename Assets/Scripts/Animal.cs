@@ -165,7 +165,9 @@ namespace Assets.Scripts
 
 
                     if ( type == Properties.HORSE)
-                    {                    }
+                    {
+                        GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().firewall, altar2.transform.position, Quaternion.identity);
+                    }
                     else if (type == Properties.CAT)
                     {
                         foreach(GameObject ob in P1tree)
@@ -224,7 +226,9 @@ namespace Assets.Scripts
 
                     GameObject ps = (GameObject)Instantiate(gm.GetComponent<GameManager>().altarSystem, altar2.transform.position, Quaternion.identity);
                     if (type == Properties.HORSE)
-                    { }
+                    {
+                        GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().firewall, altar1.transform.position, Quaternion.identity);
+                    }
                     else if (type == Properties.CAT)
                     {
                         foreach (GameObject ob in P2tree)
@@ -276,7 +280,7 @@ namespace Assets.Scripts
         {
             gameObject.GetComponentInChildren<ParticleSystem>().Play();
             if ((Vector3.Distance(player1.transform.position,this.gameObject.transform.position) < 1.5) &&
-                (Input.GetKeyDown(KeyCode.LeftControl)))
+                (Input.GetButtonDown("Fire1")))
             {
                 if (player1.GetComponent<Player1>().hasSacrifice == false)
                 {
@@ -290,7 +294,7 @@ namespace Assets.Scripts
             }
 
             if ((Vector3.Distance(player2.transform.position,this.gameObject.transform.position) < 1.5) &&
-                (Input.GetKeyDown("[.]")))
+                (Input.GetButtonDown("Fire12")))
             {
                 if (player2.GetComponent<Player2>().hasSacrifice == false)
                 {
