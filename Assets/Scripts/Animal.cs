@@ -28,7 +28,19 @@ namespace Assets.Scripts
         public int type;
 
         //DynamicCharacter
-        public GameObject GameObject { get; protected set; }
+        public KinematicData KinematicData { get; protected set; }
+        private DynamicMovement movement;
+        public DynamicMovement Movement
+        {
+            get { return this.movement; }
+            set
+            {
+                this.movement = value;
+                if (this.movement != null) this.movement.Character = this.KinematicData;
+            }
+        }
+        public float Drag { get; set; }
+        public float MaxSpeed { get; set; }
 
 
         public void Start()
@@ -40,18 +52,40 @@ namespace Assets.Scripts
             gm = GameObject.FindWithTag("GameManager");
             defaultY = this.transform.position;
 
+            this.KinematicData = new KinematicData(new StaticData(gameObject.transform.position));
+            this.Drag = 1;
+            this.MaxSpeed = 1.0f - this.Weight();
+
+            this.Movement = new DynamicWander(0.5f, 0.05f, this.MaxSpeed)
+            {
+                Character = this.KinematicData,
+                Target = new KinematicData(new StaticData(this.spawn.gameObject.transform.position))
+            };
+
         }
 
         public void Update()
         {
-          
+            
             if (carried)
             {
                 carry(this.gameObject);
             }
             else
             {
-                
+                if (this.Movement != null)
+            {
+                MovementOutput steering = this.Movement.GetMovement();
+
+                //Debug.DrawRay(this.GameObject.transform.position, steering.linear,Color.blue);
+
+                this.KinematicData.Integrate(steering, this.Drag, Time.deltaTime);
+                this.KinematicData.SetOrientationFromVelocity();
+                this.KinematicData.TrimMaxSpeed(this.MaxSpeed);
+
+                this.gameObject.transform.position = this.KinematicData.position;
+                this.gameObject.transform.rotation = Quaternion.AngleAxis(this.KinematicData.orientation * MathConstants.MATH_180_PI, Vector3.up);
+            }
                 pickUp();
             }
         }
