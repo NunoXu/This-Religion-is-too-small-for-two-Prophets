@@ -142,7 +142,20 @@ namespace Assets.Scripts
                     {                    }
                     else if (type == Properties.CAT)
                     {
-                        if (gm.GetComponent<GameManager>().meteor){ 
+
+                    }
+                    else if (type == Properties.CHICKEN)
+                    {  }
+                    else if (type == Properties.SHEEP)
+                    {
+                        GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().rockslider, new Vector3(10.75f, 0.15f, 6.0f), Quaternion.identity);
+                    }
+                    else if(type == Properties.UNICORN)
+                    {                    }
+                    else if (type == Properties.GOAT)
+                    {
+                        if (gm.GetComponent<GameManager>().meteor)
+                        {
                             gm.GetComponent<GameManager>().meteor = false;
                             GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().meteorr, new Vector3(-10.0f, 0.15f, 6.0f), Quaternion.identity);
                         }
@@ -151,17 +164,6 @@ namespace Assets.Scripts
                             gm.GetComponent<GameManager>().meteor = true;
                             GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().meteorr, new Vector3(-10.0f, 0.15f, -7.0f), Quaternion.identity);
                         }
-
-                }
-                    else if (type == Properties.CHICKEN)
-                    {  }
-                    else if (type == Properties.SHEEP)
-                    {                    }
-                    else if(type == Properties.UNICORN)
-                    {                    }
-                    else if (type == Properties.GOAT)
-                    {
-                        
                     }
                     this.spawn.hasAnimal = false;
                     Destroy(this.gameObject);
@@ -184,6 +186,18 @@ namespace Assets.Scripts
                     if (type == Properties.HORSE)
                     { }
                     else if (type == Properties.CAT)
+                    {
+                       
+                    }
+                    else if (type == Properties.CHICKEN)
+                    { }
+                    else if (type == Properties.SHEEP)
+                    {
+                        GameObject pse = (GameObject)Instantiate(gm.GetComponent<GameManager>().rockslidel, new Vector3(10.75f, 0.15f, 6.0f), Quaternion.identity);
+                    }
+                    else if (type == Properties.UNICORN)
+                    { }
+                    else if (type == Properties.GOAT)
                     {
                         if (gm.GetComponent<GameManager>().meteor)
                         {
