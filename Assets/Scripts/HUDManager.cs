@@ -23,5 +23,13 @@ namespace Assets.Scripts
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        void Update()
+        {
+            if (GameOverPanel.activeSelf && Input.anyKeyDown)
+            {
+                RestartLevel();
+            }
+        }
     }
 }

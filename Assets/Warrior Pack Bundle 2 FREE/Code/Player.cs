@@ -14,7 +14,7 @@ namespace Assets.Scripts
         public Vector3 inputVec;
         public Vector3 targetDirection;
 
-        public int PlayerNumber { get; private set; }
+        public int PlayerNumber;
         public GameObject CurrentSacrifice;
         public bool hasSacrifice;
 
