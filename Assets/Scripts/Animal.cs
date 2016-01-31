@@ -77,6 +77,8 @@ namespace Assets.Scripts
             if (carried)
             {
                 carry(this.gameObject);
+               
+
             }
             else
             {
@@ -148,6 +150,7 @@ namespace Assets.Scripts
                 carried = false;
                 player1.GetComponent<Player1>().hasSacrifice = false;
 
+                gameObject.GetComponentInChildren<ParticleSystem>().Stop();
                 if (Vector3.Distance(this.gameObject.transform.position, altar1.transform.position) < 1.25f)
 
                 {
@@ -204,6 +207,7 @@ namespace Assets.Scripts
             {
                 carried = false;
                 player2.GetComponent<Player2>().hasSacrifice = false;
+                gameObject.GetComponentInChildren<ParticleSystem>().Stop();
                 if (Vector3.Distance(this.gameObject.transform.position, altar2.transform.position) < 1.25f)
                 {
                     GameObject ps = (GameObject)Instantiate(gm.GetComponent<GameManager>().altarSystem, altar2.transform.position, Quaternion.identity);
@@ -262,6 +266,7 @@ namespace Assets.Scripts
 
         void pickUp()
         {
+            gameObject.GetComponentInChildren<ParticleSystem>().Play();
             if ((Vector3.Distance(player1.transform.position,this.gameObject.transform.position) < 1.5) &&
                 (Input.GetKeyDown(KeyCode.LeftControl)))
             {
