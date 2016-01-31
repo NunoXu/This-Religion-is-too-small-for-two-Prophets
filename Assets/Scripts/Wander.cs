@@ -7,9 +7,9 @@ using System.Collections;
 [RequireComponent(typeof(CharacterController))]
 public class Wander : MonoBehaviour
 {
-    public float speed = 1.0f;
+    public float speed = 0.4f;
     public float directionChangeInterval = 1;
-    public float maxHeadingChange = 30;
+    public float maxHeadingChange = 10;
 
     CharacterController controller;
     float heading;
@@ -22,7 +22,7 @@ public class Wander : MonoBehaviour
         // Set random initial rotation
         heading = Random.Range(0, 360);
         transform.eulerAngles = new Vector3(0, heading, 0);
-
+        
         StartCoroutine(NewHeading());
     }
 
@@ -55,5 +55,6 @@ public class Wander : MonoBehaviour
         var ceil = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
         heading = Random.Range(floor, ceil);
         targetRotation = new Vector3(0, heading, 0);
+    
     }
 }

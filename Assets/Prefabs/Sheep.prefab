@@ -29,6 +29,8 @@ GameObject:
   - 23: {fileID: 2310156}
   - 65: {fileID: 6586264}
   - 114: {fileID: 11420524}
+  - 143: {fileID: 14375760}
+  - 114: {fileID: 11470770}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Untagged
@@ -119,6 +121,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn: {fileID: 0}
   type: 0
+--- !u!114 &11470770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0864d623a0a9ea429ab7834111dc45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  directionChangeInterval: 1
+  maxHeadingChange: 30
+--- !u!143 &14375760
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175348}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1.2935228
+  m_Radius: 1.1816785
+  m_SlopeLimit: 45
+  m_StepOffset: 0
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &19841542
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1681,6 +1714,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_StepOffset
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
