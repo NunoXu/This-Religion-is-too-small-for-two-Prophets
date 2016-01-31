@@ -29,6 +29,7 @@ GameObject:
   - 135: {fileID: 13598344}
   - 23: {fileID: 2300710}
   - 26: {fileID: 2676370}
+  - 114: {fileID: 11497412}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -146,7 +147,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.85, y: 0, z: 5.7}
+  m_LocalPosition: {x: 10.85, y: 0, z: 5.71}
   m_LocalScale: {x: 0.6541422, y: 0.6541422, z: 0.6541422}
   m_Children:
   - {fileID: 409644}
@@ -325,6 +326,20 @@ MonoBehaviour:
   startPosition: {fileID: 422288}
   endPosition: {fileID: 467842}
   direction: -1
+  meteorCollider: {fileID: 13598344}
+  Player: 0
+--- !u!114 &11497412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ed99a46db396b49b02803e4a497f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spell: {fileID: 11428262}
 --- !u!135 &13598344
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -336,7 +351,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.8207898
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.2, y: 0, z: 0}
 --- !u!198 &19854148
 ParticleSystem:
   m_ObjectHideFlags: 1

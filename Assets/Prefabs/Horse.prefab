@@ -71,6 +71,7 @@ GameObject:
   - 95: {fileID: 9540962}
   - 114: {fileID: 11493464}
   - 65: {fileID: 6576072}
+  - 54: {fileID: 5470786}
   m_Layer: 0
   m_Name: Horse
   m_TagString: Untagged
@@ -1321,6 +1322,21 @@ Transform:
   - {fileID: 494800}
   m_Father: {fileID: 440196}
   m_RootOrder: 0
+--- !u!54 &5470786
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108588}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &6576072
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -3000,6 +3016,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
