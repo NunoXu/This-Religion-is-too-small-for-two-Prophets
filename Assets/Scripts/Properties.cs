@@ -4,7 +4,7 @@ namespace Assets.Scripts
 {
     public static class Properties
     {
-        public const int ANIMAL_TYPES = 5;
+        public const int ANIMAL_TYPES = 4;
         public const int CAT = 0;
         public const int HORSE = 1;
         public const int SHEEP = 2;
@@ -17,11 +17,11 @@ namespace Assets.Scripts
 
         public const float ANIMAL_SPAWN_RADIUS = 1.5f;
 
-        public const float CAT_WEIGHT = 0.2f;
-        public const float HORSE_WEIGHT = 0.6f;
-        public const float SHEEP_WEIGHT = 0.4f;
-        public const float CHICKEN_WEIGHT = 0.1f;
-        public const float GOAT_WEIGHT = 0.35f;
+        public const float CAT_WEIGHT = 0.1f;
+        public const float HORSE_WEIGHT = 0.3f;
+        public const float SHEEP_WEIGHT = 0.2f;
+        public const float CHICKEN_WEIGHT = 0.05f;
+        public const float GOAT_WEIGHT = 0.15f;
         public const float UNICORN_WEIGHT = 0.55f;
 
         public const int ANIMAL_SPAWNS = 6;

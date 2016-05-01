@@ -8087,6 +8087,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverPanel: {fileID: 1745913810}
   GameOverText: {fileID: 91124555}
+  StartTime: 0
 --- !u!114 &1589053607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8142,6 +8143,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -10542,6 +10544,7 @@ MonoBehaviour:
   meteorl: {fileID: 196368, guid: 85f3d50e95050d44ea4783b78dd471d8, type: 2}
   meteor: 0
   thunder: {fileID: 130886, guid: 6ec9eb72960641a40adc93ac2106dfde, type: 2}
+  firewall: {fileID: 140850, guid: 2afc62a47e910114ca9faf38230fea0e, type: 2}
   SacrificesPlayerOne:
   - {fileID: 692086914}
   - {fileID: 368128265}
