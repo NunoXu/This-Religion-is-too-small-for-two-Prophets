@@ -21,7 +21,7 @@ All art and sound assets are taken from free unity packages.
 
 Team:
 
-* Carlos Margarido
-* Luís Oliveira
-* Nuno Xu
-* Tiago Cardoso
+* [Carlos Margarido](https://github.com/Badim150)
+* [Luís Oliveira](https://github.com/luiscarlos92)
+* [Nuno Xu](https://github.com/NunoXu)
+* [Tiago Cardoso](https://github.com/Kaguedes)
